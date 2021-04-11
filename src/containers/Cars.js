@@ -4,7 +4,7 @@ const Cars = () => {
   return (
     <div>
       <h2>
-        The car details of car n-
+        The cars of the app
         {cars}
       </h2>
     </div>
