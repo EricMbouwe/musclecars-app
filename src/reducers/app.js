@@ -1,38 +1,24 @@
 import * as actions from '../actions/actionTypes';
 
 const defaultState = {
-  fetching: false,
-  data: {},
-  desc: '',
-  message: '',
-  log: '',
+  loggedInStatus: 'NOT_LOGGED_IN',
+  user: {},
 };
 
 const AppReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actions.REQUESTING_DATA:
+    case actions.SIGN_UP:
       return {
         ...state,
-        fetching: true,
-        log: 'Fetching data...',
+        loggedInStatus: 'LOGGED_IN',
+        user: action.payload.user,
       };
-    case actions.REQUESTING_FAILED:
-      return {
-        ...state,
-        fetching: false,
-        message: 'Sorry unable to get coin infos, retry!',
-        log: 'fetching failed!',
-      };
-    case actions.RECEIVED_UNIT_DATA:
-      return {
-        ...state,
-        fetching: false,
-        data: {
-          ...state.data,
-          [action.coinSymbol]: action.payload[0],
-        },
-        log: 'Succes, data received!',
-      };
+    case actions.LOGGED_IN:
+      return {};
+    case actions.LOGIN:
+      return {};
+    case actions.LOGOUT:
+      return {};
     default:
       return state;
   }
