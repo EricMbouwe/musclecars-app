@@ -5,7 +5,11 @@ const CarDetails = () => {
 
   return (
     <div>
-      <p>Car details -{id} </p>
+      <h2>Hey Car details</h2>
+      <p>
+        Car details
+        <span>{id}</span>
+      </p>
     </div>
   );
 };

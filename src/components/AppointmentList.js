@@ -4,7 +4,7 @@ const AppointmentList = () => {
   return (
     <div>
       <p>{test}</p>
-      <h2>The list component of appointments</h2>
+      <h2>The list of appointments the user</h2>
     </div>
   );
 };

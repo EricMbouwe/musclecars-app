@@ -4,7 +4,7 @@ const CarList = () => {
   return (
     <div>
       <h2>
-        The cars of the app
+        The list of cars of the app
         {cars}
       </h2>
     </div>

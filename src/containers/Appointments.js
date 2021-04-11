@@ -1,11 +1,11 @@
 import AppointmentList from '../components/AppointmentList';
 
 const Appointments = () => {
-  const test = 'hey';
+  const test = 'Hey Appointment List';
 
   return (
     <div>
-      <p>{test}</p>
+      <h2>{test}</h2>
       <AppointmentList />
     </div>
   );
