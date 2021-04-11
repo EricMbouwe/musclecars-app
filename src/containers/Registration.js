@@ -11,7 +11,7 @@ const Registration = () => {
     e.preventDefault();
     axios
       .post(
-        'http://localhost:3001/users',
+        'http://localhost:3001/api/v1/users',
         {
           name,
           email,
@@ -30,7 +30,7 @@ const Registration = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" value={name} onChange={() => setName(name)} />
+          <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
 
         <div className="form-group">
@@ -39,7 +39,7 @@ const Registration = () => {
             type="text"
             id="email"
             value={email}
-            onChange={() => setEmail(email)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -49,7 +49,7 @@ const Registration = () => {
             type="text"
             id="password"
             value={password}
-            onChange={() => setPassword(password)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
