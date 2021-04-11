@@ -1,4 +1,4 @@
-const Cars = () => {
+const CarList = () => {
   const cars = [];
 
   return (
@@ -11,4 +11,4 @@ const Cars = () => {
   );
 };
 
-export default Cars;
+export default CarList;

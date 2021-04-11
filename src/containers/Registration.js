@@ -1,17 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const Registration = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isPending, setIsPending] = useState(true);
-  const history = useHistory();
+  const [isPending, setIsPending] = useState(false);
+  // const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsPending(true);
 
     axios
       .post(
@@ -27,7 +28,7 @@ const Registration = () => {
         console.log('user is', response.data);
         setIsPending(false);
         // history.go(-1);
-        history.push('/');
+        // history.push('/');
       })
       .catch((error) => console.log('Regsitration Errors', error));
   };
@@ -65,9 +66,13 @@ const Registration = () => {
           />
         </div>
 
-        <button type="submit">Register</button>
+        {!isPending && <button type="submit">Register</button>}
+        {isPending && (
+          <button type="submit" disabled>
+            Registering...
+          </button>
+        )}
       </form>
-      {isPending && <span>Loading...</span>}
     </div>
   );
 };

@@ -4,8 +4,8 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import Car from '../containers/Car';
-import Cars from '../containers/Cars';
+import Car from './Car';
+import CarList from './CarList';
 import Appointments from '../containers/Appointments';
 import './App.css';
 import Header from './Header';
@@ -17,8 +17,10 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/" component={Cars} />
+          <Route exact path="/" component={CarList} />
           <Route exact path="/admin" component={Registration} />
+          <Route exact path="/signup" component={Registration} />
+          <Route exact path="/login" component={Registration} />
           <Route exact path="/cars/:id" component={Car} />
           <Route exact path="/appointments" component={Appointments} />
           <Redirect to="/cars" />
@@ -27,8 +29,5 @@ function App() {
     </div>
   );
 }
-
-// <Route exact path="/login" component={} />
-// <Route exact path="/signup" component={} />
 
 export default App;

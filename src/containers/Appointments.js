@@ -1,12 +1,12 @@
+import AppointmentList from '../components/AppointmentList';
+
 const Appointments = () => {
-  const appointments = [];
+  const test = 'hey';
 
   return (
     <div>
-      <h2>
-        The appointments of the app-
-        {appointments}
-      </h2>
+      <p>{test}</p>
+      <AppointmentList />
     </div>
   );
 };

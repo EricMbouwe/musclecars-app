@@ -5,8 +5,8 @@ const Header = () => (
     <nav>
       <Link to="/">logo</Link>
       <div className="nav-links">
-        <NavLink to="/">Login</NavLink>
-        <NavLink to="/">Sign up</NavLink>
+        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/signup">Sign up</NavLink>
         <div>Current_User_Name</div>
         <NavLink to="/">logout</NavLink>
       </div>
