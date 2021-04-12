@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actions from './actionTypes';
+import history from '../history';
 
 // REQUEST ACTIONS
 const requestingData = () => ({ type: actions.REQUESTING_DATA });
@@ -52,6 +53,7 @@ export const signIn = (email, password) => async (dispatch) => {
     );
     if (response.data.logged_in) {
       dispatch(receivedSignedInUserData(response));
+      history.push('/');
     }
   } catch (error) {
     dispatch(sendingFailed());

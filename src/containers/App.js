@@ -1,6 +1,6 @@
 import {
   Route,
-  BrowserRouter as Router,
+  Router,
   Switch,
   Redirect,
 } from 'react-router-dom';
@@ -16,6 +16,7 @@ import AdminLogin from './AdminLogin';
 import CarRegistration from './CarRegistration';
 import Login from './Login';
 import { checkLoggedInStatus } from '../actions/actionCreator';
+import history from '../history';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router history={history}>
         <Header
           dispatch={dispatch}
           loggedInStatus={loggedInStatus}
