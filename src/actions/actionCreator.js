@@ -95,3 +95,21 @@ export const logOut = () => async (dispatch) => {
     dispatch(sendingFailed());
   }
 };
+
+// CAR LIST ACTIONS
+export const receivedCarListData = (response) => ({
+  type: actions.GET_CARLIST,
+  payload: response.data,
+});
+
+export const getCarList = () => async (dispatch) => {
+  try {
+    dispatch(requestingData());
+    const response = await axios.get('http://localhost:3001/api/v1/cars', {
+      withCredentials: true,
+    });
+    dispatch(receivedCarListData(response));
+  } catch (error) {
+    dispatch(requestingFailed());
+  }
+};

@@ -7,3 +7,4 @@ export const SIGN_UP = 'SIGN_UP';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGOUT = 'LOGOUT';
 export const RECEIVED_NEW_USER_DATA = 'RECEIVED_NEW_USER_DATA';
+export const GET_CARLIST = 'GET_CARLIST';
