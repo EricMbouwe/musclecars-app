@@ -4,7 +4,7 @@ import { deleteCar } from '../actions/actionCreator';
 const Car = ({ car, dispatch, currentUser }) => (
   <div>
     <div>
-      <img src={car.pictures[0].url} alt={car.name} />
+      <img src={car?.pictures[0]?.url} alt={car.name} width="300" height="200" />
     </div>
     <h1>{car.name}</h1>
     <span>{car.price}</span>
@@ -12,7 +12,7 @@ const Car = ({ car, dispatch, currentUser }) => (
     {currentUser.role === 'admin' && (
       <div>
         <button type="button">update</button>
-        <button type="button" onClick={() => dispatch(deleteCar())}>Delete</button>
+        <button type="button" onClick={() => dispatch(deleteCar(car.id))}>Delete</button>
       </div>
     )}
   </div>

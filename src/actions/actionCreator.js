@@ -123,14 +123,11 @@ export const receivedCarData = (response) => ({
 export const getCar = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
-    const response = await axios.get(
-      'http://localhost:3001/api/v1/cars',
-      {
-        id,
-      },
-      { withCredentials: true },
-    );
-    dispatch(receivedCarListData(response));
+    const response = await axios.get(`http://localhost:3001/admin/cars/${id}`, {
+      withCredentials: true,
+    });
+    console.log('CAR RETRIEVED', response);
+    dispatch(receivedCarData(response));
   } catch (error) {
     dispatch(requestingFailed());
   }
@@ -140,13 +137,11 @@ export const deleteCar = (id) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.delete(
-      'http://localhost:3001/admin/cars',
-      {
-        id,
-      },
+      `http://localhost:3001/admin/cars/${id}`,
       { withCredentials: true },
     );
-    dispatch(receivedCarListData(response));
+    dispatch(getCarList(response));
+    history.push('/');
   } catch (error) {
     dispatch(sendingFailed());
   }
