@@ -34,3 +34,30 @@ export const addNewUser = (name, email, password) => async (dispatch) => {
     dispatch(sendingFailed());
   }
 };
+
+// LOGIN ACTIONS
+export const receivedSignedInUserData = (response) => ({
+  type: actions.LOGIN,
+  payload: response.data,
+});
+
+export const signIn = (email, password) => async (dispatch) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.post(
+      'http://localhost:3001/sessions',
+      {
+        email,
+        password,
+      },
+      { withCredentials: true },
+    );
+    if (response.data.logged_in) {
+      console.log('user is', response.data);
+      dispatch(receivedSignedInUserData(response));
+    }
+  } catch (error) {
+    console.log('Regsitration Errors', error.message);
+    dispatch(sendingFailed());
+  }
+};

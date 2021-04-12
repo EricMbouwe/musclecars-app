@@ -1,11 +1,55 @@
-const Login = () => {
-  const test = 'Hey User Login';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { signIn } from '../actions/actionCreator';
+
+const Login = ({ loggedInStatus, currentUser, dispatch }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [errors, setErrors] = useState('');
+  // const [isPending, setIsPending] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signIn(email, password));
+  };
+
+  console.log('APP STATE STATUS', loggedInStatus);
+  console.log('CURRENT USER', currentUser);
+
   return (
     <div>
-      <h2>{test}</h2>
-      <p>Login page</p>
+      <h2>Hey Sign In</h2>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Email</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Password</label>
+          <input
+            type="text"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">login</button>
+      </form>
     </div>
   );
+};
+
+Login.propTypes = {
+  loggedInStatus: PropTypes.string.isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default Login;

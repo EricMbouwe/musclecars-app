@@ -11,12 +11,16 @@ const AppReducer = (state = defaultState, action) => {
       return {
         ...state,
         loggedInStatus: 'LOGGED_IN',
-        user: { ...state.user, user: action.payload.user },
+        user: action.payload.user,
       };
     case actions.LOGGED_IN:
       return {};
     case actions.LOGIN:
-      return {};
+      return {
+        ...state,
+        loggedInStatus: 'LOGGED_IN',
+        user: action.payload.user,
+      };
     case actions.LOGOUT:
       return {};
     default:

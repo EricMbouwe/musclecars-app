@@ -18,7 +18,6 @@ import Login from './Login';
 function App() {
   const dispatch = useDispatch();
   const appState = useSelector((state) => state.app);
-
   const { loggedInStatus, user } = appState;
 
   return (
@@ -36,7 +35,13 @@ function App() {
               currentUser={user}
             />
           </Route>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login">
+            <Login
+              dispatch={dispatch}
+              loggedInStatus={loggedInStatus}
+              currentUser={user}
+            />
+          </Route>
           <Route exact path="/cars/:id" component={CarDetails} />
           <Route exact path="/appointments" component={Appointments} />
           <Redirect to="/" />
