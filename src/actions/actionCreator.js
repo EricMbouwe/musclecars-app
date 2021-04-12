@@ -28,6 +28,7 @@ export const addNewUser = (name, email, password) => async (dispatch) => {
     );
     if (response.data.status === 'created') {
       dispatch(receivedNewUserData(response));
+      history.push('/');
     }
   } catch (error) {
     dispatch(sendingFailed());
