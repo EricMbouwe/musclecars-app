@@ -14,12 +14,11 @@ const Login = ({ loggedInStatus, currentUser, dispatch }) => {
     dispatch(signIn(email, password));
   };
 
-  console.log('APP STATE STATUS', loggedInStatus);
-  console.log('CURRENT USER', currentUser);
-
   return (
     <div>
       <h2>Hey Sign In</h2>
+      <h1>{loggedInStatus}</h1>
+      {currentUser && <h1>{currentUser.name}</h1>}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -46,9 +45,14 @@ const Login = ({ loggedInStatus, currentUser, dispatch }) => {
   );
 };
 
+Login.defaultProps = {
+  loggedInStatus: 'NOT_LOGGED_IN',
+  currentUser: {},
+};
+
 Login.propTypes = {
-  loggedInStatus: PropTypes.string.isRequired,
-  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  loggedInStatus: PropTypes.string,
+  currentUser: PropTypes.oneOfType([PropTypes.object]),
   dispatch: PropTypes.func.isRequired,
 };
 

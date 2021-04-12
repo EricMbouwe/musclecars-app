@@ -15,12 +15,11 @@ const Registration = ({ loggedInStatus, currentUser, dispatch }) => {
     dispatch(addNewUser(name, email, password));
   };
 
-  console.log('APP STATE STATUS', loggedInStatus);
-  console.log('CURRENT USER', currentUser);
-
   return (
     <div>
       <h2>Hey sign up</h2>
+      <h1>{loggedInStatus}</h1>
+      {currentUser && <h1>{currentUser.name}</h1>}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -56,9 +55,14 @@ const Registration = ({ loggedInStatus, currentUser, dispatch }) => {
   );
 };
 
+Registration.defaultProps = {
+  loggedInStatus: 'NOT_LOGGED_IN',
+  currentUser: {},
+};
+
 Registration.propTypes = {
-  loggedInStatus: PropTypes.string.isRequired,
-  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  loggedInStatus: PropTypes.string,
+  currentUser: PropTypes.oneOfType([PropTypes.object]),
   dispatch: PropTypes.func.isRequired,
 };
 

@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as actions from './actionTypes';
 
 // REQUEST ACTIONS
-// const requestingData = () => ({ type: actions.REQUESTING_DATA });
-// const requestingFailed = () => ({ type: actions.REQUESTING_FAILED });
+const requestingData = () => ({ type: actions.REQUESTING_DATA });
+const requestingFailed = () => ({ type: actions.REQUESTING_FAILED });
 const sendingData = () => ({ type: actions.SENDING_DATA });
 const sendingFailed = () => ({ type: actions.SENDING_FAILED });
 
@@ -26,11 +26,9 @@ export const addNewUser = (name, email, password) => async (dispatch) => {
       { withCredentials: true },
     );
     if (response.data.status === 'created') {
-      console.log('user is', response.data);
       dispatch(receivedNewUserData(response));
     }
   } catch (error) {
-    console.log('Regsitration Errors', error.message);
     dispatch(sendingFailed());
   }
 };
@@ -53,11 +51,44 @@ export const signIn = (email, password) => async (dispatch) => {
       { withCredentials: true },
     );
     if (response.data.logged_in) {
-      console.log('user is', response.data);
       dispatch(receivedSignedInUserData(response));
     }
   } catch (error) {
-    console.log('Regsitration Errors', error.message);
+    dispatch(sendingFailed());
+  }
+};
+
+export const receivedLoggedInStatusData = (response) => ({
+  type: actions.LOGGED_IN,
+  payload: response.data,
+});
+
+export const checkLoggedInStatus = () => async (dispatch) => {
+  try {
+    dispatch(requestingData());
+    const response = await axios.get('http://localhost:3001/logged_in', {
+      withCredentials: true,
+    });
+    dispatch(receivedLoggedInStatusData(response));
+  } catch (error) {
+    dispatch(requestingFailed());
+  }
+};
+
+// LOGOUT ACTIONS
+export const receivedLogOutStatusData = (response) => ({
+  type: actions.LOGOUT,
+  payload: response.data,
+});
+
+export const logOut = () => async (dispatch) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.delete('http://localhost:3001/logout', {
+      withCredentials: true,
+    });
+    dispatch(receivedLogOutStatusData(response));
+  } catch (error) {
     dispatch(sendingFailed());
   }
 };

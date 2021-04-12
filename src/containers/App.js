@@ -4,6 +4,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CarDetails from './CarDetails';
 import Home from './Home';
@@ -14,16 +15,25 @@ import Registration from './Registration';
 import AdminLogin from './AdminLogin';
 import CarRegistration from './CarRegistration';
 import Login from './Login';
+import { checkLoggedInStatus } from '../actions/actionCreator';
 
 function App() {
   const dispatch = useDispatch();
   const appState = useSelector((state) => state.app);
   const { loggedInStatus, user } = appState;
 
+  useEffect(() => {
+    dispatch(checkLoggedInStatus());
+  }, []);
+
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header
+          dispatch={dispatch}
+          loggedInStatus={loggedInStatus}
+          currentUser={user}
+        />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/admin" component={AdminLogin} />
