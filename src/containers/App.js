@@ -36,7 +36,12 @@ function App() {
           currentUser={user}
         />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/">
+            <Home
+              dispatch={dispatch}
+              currentUser={user}
+            />
+          </Route>
           <Route exact path="/admin" component={AdminLogin} />
           <Route exact path="/admin/cars/new" component={CarRegistration} />
           <Route exact path="/signup">

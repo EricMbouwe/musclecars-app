@@ -1,4 +1,5 @@
 export const REQUESTING_DATA = 'REQUESTING_DATA';
+export const RECEIVED_DATA = 'RECEIVED_DATA';
 export const REQUESTING_FAILED = 'REQUESTING_FAILED';
 export const SENDING_DATA = 'SENDING_DATA';
 export const SENDING_FAILED = 'SENDING_FAILED';
@@ -6,5 +7,4 @@ export const LOGIN = 'LOGIN';
 export const SIGN_UP = 'SIGN_UP';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGOUT = 'LOGOUT';
-export const RECEIVED_NEW_USER_DATA = 'RECEIVED_NEW_USER_DATA';
 export const GET_CARLIST = 'GET_CARLIST';
