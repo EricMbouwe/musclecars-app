@@ -123,7 +123,7 @@ export const receivedCarData = (response) => ({
 export const getCar = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
-    const response = await axios.get(`http://localhost:3001/admin/cars/${id}`, {
+    const response = await axios.get(`http://localhost:3001/api/v1/cars/${id}`, {
       withCredentials: true,
     });
     console.log('CAR RETRIEVED', response);

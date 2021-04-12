@@ -37,10 +37,7 @@ function App() {
         />
         <Switch>
           <Route exact path="/">
-            <Home
-              dispatch={dispatch}
-              currentUser={user}
-            />
+            <Home dispatch={dispatch} currentUser={user} />
           </Route>
           <Route exact path="/admin" component={AdminLogin} />
           <Route exact path="/admin/cars/new" component={CarRegistration} />
@@ -58,7 +55,13 @@ function App() {
               currentUser={user}
             />
           </Route>
-          <Route exact path="/cars/:id" component={CarDetails} />
+          <Route exact path="/cars/:id">
+            <CarDetails
+              dispatch={dispatch}
+              loggedInStatus={loggedInStatus}
+              currentUser={user}
+            />
+          </Route>
           <Route exact path="/appointments" component={Appointments} />
           <Redirect to="/" />
         </Switch>
