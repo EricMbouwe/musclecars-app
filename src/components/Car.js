@@ -4,7 +4,7 @@ import { deleteCar } from '../actions/actionCreator';
 const Car = ({ car, dispatch, currentUser }) => (
   <div>
     <div>
-      <img src={car?.pictures[0]?.url} alt={car.name} width="300" height="200" />
+      <img src={car?.pictures[0]?.url} alt={car.name} width="250" height="200" />
     </div>
     <h1>{car.name}</h1>
     <span>{car.price}</span>

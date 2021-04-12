@@ -13,6 +13,13 @@ const CarList = ({
       && cars.map((car) => (
         <Link to={`cars/${car.id}`} key={car.id}><Car car={car} dispatch={dispatch} currentUser={currentUser} /></Link>
       ))}
+    {currentUser.role === 'admin' && (
+    <div>
+      <button type="button">
+        New car
+      </button>
+    </div>
+    )}
   </div>
 );
 
