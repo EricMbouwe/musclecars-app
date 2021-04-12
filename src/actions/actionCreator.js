@@ -113,3 +113,41 @@ export const getCarList = () => async (dispatch) => {
     dispatch(requestingFailed());
   }
 };
+
+// CAR ACTIONS
+export const receivedCarData = (response) => ({
+  type: actions.GET_CAR,
+  payload: response.data,
+});
+
+export const getCar = (id) => async (dispatch) => {
+  try {
+    dispatch(requestingData());
+    const response = await axios.get(
+      'http://localhost:3001/api/v1/cars',
+      {
+        id,
+      },
+      { withCredentials: true },
+    );
+    dispatch(receivedCarListData(response));
+  } catch (error) {
+    dispatch(requestingFailed());
+  }
+};
+
+export const deleteCar = (id) => async (dispatch) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.delete(
+      'http://localhost:3001/admin/cars',
+      {
+        id,
+      },
+      { withCredentials: true },
+    );
+    dispatch(receivedCarListData(response));
+  } catch (error) {
+    dispatch(sendingFailed());
+  }
+};

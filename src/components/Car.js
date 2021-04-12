@@ -1,12 +1,27 @@
-const Car = () => {
-  const test = 'hey';
+import PropTypes from 'prop-types';
+import { deleteCar } from '../actions/actionCreator';
 
-  return (
+const Car = ({ car, dispatch, currentUser }) => (
+  <div>
     <div>
-      <p>{test}</p>
-      <h2>The car details for the car list</h2>
+      <img src={car.pictures[0].url} alt={car.name} />
     </div>
-  );
+    <h1>{car.name}</h1>
+    <span>{car.price}</span>
+    <span>$</span>
+    {currentUser.role === 'admin' && (
+      <div>
+        <button type="button">update</button>
+        <button type="button" onClick={() => dispatch(deleteCar())}>Delete</button>
+      </div>
+    )}
+  </div>
+);
+
+Car.propTypes = {
+  car: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  dispatch: PropTypes.func.isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default Car;

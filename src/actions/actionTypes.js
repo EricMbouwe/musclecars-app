@@ -8,3 +8,5 @@ export const SIGN_UP = 'SIGN_UP';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGOUT = 'LOGOUT';
 export const GET_CARLIST = 'GET_CARLIST';
+export const GET_CAR = 'GET_CAR';
+export const DELETE_CAR = 'DELETE_CAR';
