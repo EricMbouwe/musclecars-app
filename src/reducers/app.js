@@ -11,7 +11,7 @@ const AppReducer = (state = defaultState, action) => {
       return {
         ...state,
         loggedInStatus: 'LOGGED_IN',
-        user: action.payload.user,
+        user: { ...state.user, user: action.payload.user },
       };
     case actions.LOGGED_IN:
       return {};

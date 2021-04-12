@@ -1,54 +1,26 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import axios from 'axios';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { receivedNewUserData } from '../actions/actionCreator';
+import PropTypes from 'prop-types';
+import { addNewUser } from '../actions/actionCreator';
 
-const Registration = () => {
+const Registration = ({ loggedInStatus, currentUser, dispatch }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState('');
-  const [isPending, setIsPending] = useState(false);
-  const history = useHistory();
-  const dispatch = useDispatch();
+  // const [errors, setErrors] = useState('');
+  // const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsPending(true);
-
-    axios
-      .post(
-        'http://localhost:3000/api/v1/users',
-        {
-          name,
-          email,
-          password,
-        },
-        { withCredentials: true },
-      )
-      .then((response) => {
-        console.log('user is', response.data);
-        setIsPending(false);
-        console.log(isPending);
-
-        if (response.data.status === 'created') {
-          history.push('/');
-          // history.go(-1);
-          // dispatch action to change the app loggedInstatus and user data
-          dispatch(receivedNewUserData(response));
-        } else {
-          setErrors('Something went wrong');
-        }
-      })
-      .catch((error) => console.log('Regsitration Errors', error.message));
+    dispatch(addNewUser(name, email, password));
   };
+
+  console.log('APP STATE STATUS', loggedInStatus);
+  console.log('CURRENT USER', currentUser);
 
   return (
     <div>
       <h2>Hey sign up</h2>
-      <div>{errors && <h2>{errors}</h2>}</div>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -82,6 +54,12 @@ const Registration = () => {
       </form>
     </div>
   );
+};
+
+Registration.propTypes = {
+  loggedInStatus: PropTypes.string.isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default Registration;
