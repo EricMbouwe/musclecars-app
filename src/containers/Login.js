@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from '../actions/actionCreator';
 
-const Login = ({ loggedInStatus, currentUser, dispatch }) => {
+const Login = ({ dispatch }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const [errors, setErrors] = useState('');
@@ -17,8 +17,6 @@ const Login = ({ loggedInStatus, currentUser, dispatch }) => {
   return (
     <div>
       <h2>Hey Sign In</h2>
-      <h1>{loggedInStatus}</h1>
-      {currentUser && <h1>{currentUser.name}</h1>}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -45,14 +43,7 @@ const Login = ({ loggedInStatus, currentUser, dispatch }) => {
   );
 };
 
-Login.defaultProps = {
-  loggedInStatus: 'NOT_LOGGED_IN',
-  currentUser: {},
-};
-
 Login.propTypes = {
-  loggedInStatus: PropTypes.string,
-  currentUser: PropTypes.oneOfType([PropTypes.object]),
   dispatch: PropTypes.func.isRequired,
 };
 

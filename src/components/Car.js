@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { deleteCar } from '../actions/actionCreator';
+import Button from './Button';
 
 const Car = ({ car, dispatch, isAdmin }) => (
   <div>
@@ -13,6 +14,7 @@ const Car = ({ car, dispatch, isAdmin }) => (
       <div>
         <button type="button">update</button>
         <button type="button" onClick={() => dispatch(deleteCar(car.id))}>Delete</button>
+        <Button dispatch={dispatch} name="deleteBTN" action={deleteCar(car.id)} />
       </div>
     )}
   </div>

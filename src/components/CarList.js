@@ -7,16 +7,14 @@ const CarList = ({
 }) => (
   <div>
     <h2>THE CAR LIST</h2>
-    {isAdmin && (
-      <button type="button">
-        New car
-      </button>
-    )}
+    {isAdmin && <button type="button">New car</button>}
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
     {cars
       && cars.map((car) => (
-        <Link to={`cars/${car.id}`} key={car.id}><Car car={car} dispatch={dispatch} isAdmin={isAdmin} /></Link>
+        <Link to={`cars/${car.id}`} key={car.id}>
+          <Car car={car} dispatch={dispatch} isAdmin={isAdmin} />
+        </Link>
       ))}
   </div>
 );
