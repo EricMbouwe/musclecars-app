@@ -3,10 +3,10 @@ import Appointment from './Appointment';
 
 const AppointmentList = ({ appointments, isPending, error }) => (
   <div>
-    <h2>THE APPOINTMENTS LIST</h2>
+    <h2>MY APPOINTMENTS LIST</h2>
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
-    {appointments.length > 0
+    {appointments
       && appointments.map((appointment) => (
         <Appointment key={appointment.id} appointment={appointment} />
       ))}

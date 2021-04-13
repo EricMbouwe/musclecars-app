@@ -159,10 +159,9 @@ export const getAppointmentList = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
     const response = await axios.get(
-      `http://localhost:3001/api/users/${id}/appointments`,
+      `http://localhost:3001/api/v1/users/${id}/appointments`,
       { withCredentials: true },
     );
-    console.log('APPOINTS:', response);
     dispatch(receivedAppointmentListData(response));
   } catch (error) {
     dispatch(requestingFailed());
