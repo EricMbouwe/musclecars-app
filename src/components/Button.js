@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
-const Button = ({ name, dispatch, action }) => (
-  <button type="button" onClick={() => dispatch(action)}>
-    {name}
-  </button>
-);
+const Button = ({ name, action }) => {
+  const dispatch = useDispatch;
+
+  return (
+    <button type="button" onClick={() => dispatch(action)}>
+      {name}
+    </button>
+  );
+};
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,
 };
 

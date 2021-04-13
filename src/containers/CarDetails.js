@@ -35,12 +35,10 @@ const CarDetails = ({ currentUser, isAdmin }) => {
           {isAdmin && (
             <div>
               <Button
-                dispatch={dispatch}
                 name="UPDATEBTN"
                 action={() => alert('update car')}
               />
               <Button
-                dispatch={dispatch}
                 name="DELETEBTN"
                 action={deleteCar(car.id)}
               />
@@ -49,7 +47,6 @@ const CarDetails = ({ currentUser, isAdmin }) => {
           {currentUser && (
             <div>
               <Button
-                dispatch={dispatch}
                 name="BOOK NOW"
                 action={() => alert('BOOK NOW')}
               />

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 const Appointment = ({ appointment }) => (
   <div>
@@ -13,8 +14,8 @@ const Appointment = ({ appointment }) => (
     <h1>{appointment.appointment_date}</h1>
     <span>{appointment.city}</span>
     <div>
-      <button type="button">update</button>
-      <button type="button">Delete</button>
+      <Button name="UPDATEBTN" action={() => alert('Update car')} />
+      <Button name="DELETEBTN" action={() => alert('Delete appoint')} />
     </div>
   </div>
 );

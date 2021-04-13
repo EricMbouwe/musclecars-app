@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import AppointmentList from '../components/AppointmentList';
 import { getAppointmentList } from '../actions/actionCreator';
 
-const Appointments = ({ currentUser, isAdmin }) => {
+const Appointments = ({ currentUser }) => {
   const dispatch = useDispatch;
   const appointmentListState = useSelector((state) => state.appointmentList);
-  const { data: appointments, isPending, error } = appointmentListState;
+  const { data, isPending, error } = appointmentListState;
 
   useEffect(() => {
     dispatch(getAppointmentList(currentUser.id));
@@ -16,12 +16,9 @@ const Appointments = ({ currentUser, isAdmin }) => {
   return (
     <div>
       <AppointmentList
-        appointments={appointments}
+        appointments={data}
         isPending={isPending}
         error={error}
-        dispatch={dispatch}
-        isAdmin={isAdmin}
-        currentUser={currentUser}
       />
     </div>
   );
@@ -29,7 +26,6 @@ const Appointments = ({ currentUser, isAdmin }) => {
 
 Appointments.propTypes = {
   currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default Appointments;

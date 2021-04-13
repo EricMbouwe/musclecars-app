@@ -13,15 +13,13 @@ const Home = ({ isAdmin }) => {
     dispatch(getCarList());
   }, []);
 
-  const test = 'Hey Home';
   return (
     <div>
-      <h2>{test}</h2>
+      <h2>Hey Home</h2>
       <CarList
         cars={data}
         isPending={isPending}
         error={error}
-        dispatch={dispatch}
         isAdmin={isAdmin}
       />
     </div>

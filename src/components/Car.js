@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { deleteCar } from '../actions/actionCreator';
 import Button from './Button';
 
-const Car = ({ car, dispatch, isAdmin }) => (
+const Car = ({ car, isAdmin }) => (
   <div>
     <Link to={`cars/${car.id}`}>
       <div>
@@ -15,8 +15,8 @@ const Car = ({ car, dispatch, isAdmin }) => (
     </Link>
     {isAdmin && (
       <div>
-        <Button dispatch={dispatch} name="UPDATEBTN" action={() => alert('update car')} />
-        <Button dispatch={dispatch} name="DELETEBTN" action={deleteCar(car.id)} />
+        <Button name="UPDATEBTN" action={() => alert('update car')} />
+        <Button name="DELETEBTN" action={deleteCar(car.id)} />
       </div>
     )}
   </div>
@@ -24,7 +24,6 @@ const Car = ({ car, dispatch, isAdmin }) => (
 
 Car.propTypes = {
   car: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  dispatch: PropTypes.func.isRequired,
   isAdmin: PropTypes.bool.isRequired,
 };
 
