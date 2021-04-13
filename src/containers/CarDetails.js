@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import Button from '../components/Button';
 import { deleteCar, getCar } from '../actions/actionCreator';
 
 const CarDetails = ({ currentUser, isAdmin }) => {
@@ -33,17 +34,25 @@ const CarDetails = ({ currentUser, isAdmin }) => {
           <h3>{car.description}</h3>
           {isAdmin && (
             <div>
-              <button type="button" onClick={() => dispatch(deleteCar(id))}>
-                update
-              </button>
-              <button type="button" onClick={() => dispatch(deleteCar(id))}>
-                Delete
-              </button>
+              <Button
+                dispatch={dispatch}
+                name="UPDATEBTN"
+                action={() => alert('update car')}
+              />
+              <Button
+                dispatch={dispatch}
+                name="DELETEBTN"
+                action={deleteCar(car.id)}
+              />
             </div>
           )}
           {currentUser && (
             <div>
-              <button type="button">Book now</button>
+              <Button
+                dispatch={dispatch}
+                name="BOOK NOW"
+                action={() => alert('BOOK NOW')}
+              />
             </div>
           )}
         </div>

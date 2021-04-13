@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { deleteCar } from '../actions/actionCreator';
 import Button from './Button';
 
 const Car = ({ car, dispatch, isAdmin }) => (
   <div>
-    <div>
-      <img src={car?.pictures[0]?.url} alt={car.name} width="250" height="200" />
-    </div>
-    <h1>{car.name}</h1>
-    <span>{car.price}</span>
-    <span>$</span>
+    <Link to={`cars/${car.id}`}>
+      <div>
+        <img src={car?.pictures[0]?.url} alt={car.name} width="250" height="200" />
+      </div>
+      <h1>{car.name}</h1>
+      <span>{car.price}</span>
+      <span>$</span>
+    </Link>
     {isAdmin && (
       <div>
-        <button type="button">update</button>
-        <button type="button" onClick={() => dispatch(deleteCar(car.id))}>Delete</button>
-        <Button dispatch={dispatch} name="deleteBTN" action={deleteCar(car.id)} />
+        <Button dispatch={dispatch} name="UPDATEBTN" action={() => alert('update car')} />
+        <Button dispatch={dispatch} name="DELETEBTN" action={deleteCar(car.id)} />
       </div>
     )}
   </div>

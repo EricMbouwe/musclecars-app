@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Car from './Car';
 
 const CarList = ({
@@ -12,9 +11,7 @@ const CarList = ({
     {error && <span>{error}</span>}
     {cars
       && cars.map((car) => (
-        <Link to={`cars/${car.id}`} key={car.id}>
-          <Car car={car} dispatch={dispatch} isAdmin={isAdmin} />
-        </Link>
+        <Car key={car.id} car={car} dispatch={dispatch} isAdmin={isAdmin} />
       ))}
   </div>
 );
