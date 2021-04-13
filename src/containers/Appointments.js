@@ -5,7 +5,7 @@ import AppointmentList from '../components/AppointmentList';
 import { getAppointmentList } from '../actions/actionCreator';
 
 const Appointments = ({ currentUser }) => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const appointmentListState = useSelector((state) => state.appointmentList);
   const { data, isPending, error } = appointmentListState;
 

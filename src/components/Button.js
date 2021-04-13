@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 const Button = ({ name, action }) => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   return (
     <button type="button" onClick={() => dispatch(action)}>
