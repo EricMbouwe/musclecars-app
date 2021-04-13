@@ -123,10 +123,12 @@ export const receivedCarData = (response) => ({
 export const getCar = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
-    const response = await axios.get(`http://localhost:3001/api/v1/cars/${id}`, {
-      withCredentials: true,
-    });
-    console.log('CAR RETRIEVED', response);
+    const response = await axios.get(
+      `http://localhost:3001/api/v1/cars/${id}`,
+      {
+        withCredentials: true,
+      },
+    );
     dispatch(receivedCarData(response));
   } catch (error) {
     dispatch(requestingFailed());
@@ -144,5 +146,25 @@ export const deleteCar = (id) => async (dispatch) => {
     history.push('/');
   } catch (error) {
     dispatch(sendingFailed());
+  }
+};
+
+// APPOINTMENTS ACTIONS
+export const receivedAppointmentListData = (response) => ({
+  type: actions.GET_APPOINTMENTLIST,
+  payload: response.data,
+});
+
+export const getAppointmentList = (id) => async (dispatch) => {
+  try {
+    dispatch(requestingData());
+    const response = await axios.get(
+      `http://localhost:3001/api/users/${id}/appointments`,
+      { withCredentials: true },
+    );
+    console.log('APPOINTS:', response);
+    dispatch(receivedAppointmentListData(response));
+  } catch (error) {
+    dispatch(requestingFailed());
   }
 };

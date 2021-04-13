@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteCar, getCar } from '../actions/actionCreator';
 
-const CarDetails = ({ currentUser }) => {
+const CarDetails = ({ currentUser, isAdmin }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const carState = useSelector((state) => state.car);
@@ -31,7 +31,7 @@ const CarDetails = ({ currentUser }) => {
           <h1>{car.name}</h1>
           <h1>{car.price}</h1>
           <h3>{car.description}</h3>
-          {currentUser.role === 'admin' && (
+          {isAdmin && (
             <div>
               <button type="button" onClick={() => dispatch(deleteCar(id))}>
                 update
@@ -39,6 +39,11 @@ const CarDetails = ({ currentUser }) => {
               <button type="button" onClick={() => dispatch(deleteCar(id))}>
                 Delete
               </button>
+            </div>
+          )}
+          {currentUser && (
+            <div>
+              <button type="button">Book now</button>
             </div>
           )}
         </div>
@@ -49,6 +54,7 @@ const CarDetails = ({ currentUser }) => {
 
 CarDetails.propTypes = {
   currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default CarDetails;

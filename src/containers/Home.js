@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getCarList } from '../actions/actionCreator';
 import CarList from '../components/CarList';
 
-const Home = ({ currentUser }) => {
+const Home = ({ isAdmin }) => {
   const dispatch = useDispatch();
   const carListState = useSelector((state) => state.carList);
   const { data, isPending, error } = carListState;
@@ -22,14 +22,14 @@ const Home = ({ currentUser }) => {
         isPending={isPending}
         error={error}
         dispatch={dispatch}
-        currentUser={currentUser}
+        isAdmin={isAdmin}
       />
     </div>
   );
 };
 
 Home.propTypes = {
-  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default Home;

@@ -3,23 +3,21 @@ import { Link } from 'react-router-dom';
 import Car from './Car';
 
 const CarList = ({
-  cars, isPending, error, dispatch, currentUser,
+  cars, isPending, error, dispatch, isAdmin,
 }) => (
   <div>
     <h2>THE CAR LIST</h2>
+    {isAdmin && (
+      <button type="button">
+        New car
+      </button>
+    )}
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
     {cars
       && cars.map((car) => (
-        <Link to={`cars/${car.id}`} key={car.id}><Car car={car} dispatch={dispatch} currentUser={currentUser} /></Link>
+        <Link to={`cars/${car.id}`} key={car.id}><Car car={car} dispatch={dispatch} isAdmin={isAdmin} /></Link>
       ))}
-    {currentUser.role === 'admin' && (
-    <div>
-      <button type="button">
-        New car
-      </button>
-    </div>
-    )}
   </div>
 );
 
@@ -28,7 +26,7 @@ CarList.propTypes = {
   isPending: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
-  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default CarList;

@@ -27,17 +27,24 @@ function App() {
     dispatch(checkLoggedInStatus());
   }, []);
 
+  const loggedIn = loggedInStatus === 'LOGGED_IN';
+  const isAdmin = user.role === 'admin';
+
   return (
     <div className="App">
       <Router history={history}>
         <Header
           dispatch={dispatch}
-          loggedInStatus={loggedInStatus}
           currentUser={user}
+          loggedIn={loggedIn}
         />
         <Switch>
           <Route exact path="/">
-            <Home dispatch={dispatch} currentUser={user} />
+            <Home
+              dispatch={dispatch}
+              currentUser={user}
+              isAdmin={isAdmin}
+            />
           </Route>
           <Route exact path="/admin" component={AdminLogin} />
           <Route exact path="/admin/cars/new" component={CarRegistration} />
@@ -58,11 +65,17 @@ function App() {
           <Route exact path="/cars/:id">
             <CarDetails
               dispatch={dispatch}
-              loggedInStatus={loggedInStatus}
               currentUser={user}
+              isAdmin={isAdmin}
             />
           </Route>
-          <Route exact path="/appointments" component={Appointments} />
+          <Route exact path="/users/:id/appointments">
+            <Appointments
+              dispatch={dispatch}
+              currentUser={user}
+              isAdmin={isAdmin}
+            />
+          </Route>
           <Redirect to="/" />
         </Switch>
       </Router>
