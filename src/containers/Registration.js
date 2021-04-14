@@ -15,7 +15,7 @@ const Registration = ({ dispatch }) => {
 
   return (
     <div>
-      <h2>Hey sign up</h2>
+      <h2>SIGN UP</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">

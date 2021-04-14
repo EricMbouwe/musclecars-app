@@ -15,7 +15,7 @@ const Home = ({ isAdmin }) => {
 
   return (
     <div>
-      <h2>Hey Home</h2>
+      <h2>APP HOME</h2>
       <CarList
         cars={data}
         isPending={isPending}

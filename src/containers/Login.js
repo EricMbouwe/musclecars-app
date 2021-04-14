@@ -14,7 +14,7 @@ const Login = ({ dispatch }) => {
 
   return (
     <div>
-      <h2>Hey Sign In</h2>
+      <h2>SIGN IN</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">

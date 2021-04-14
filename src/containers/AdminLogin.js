@@ -1,5 +1,5 @@
 const AdminLogin = () => {
-  const test = 'hey Admin Login';
+  const test = 'ADMIN LOGIN';
 
   return (
     <div>

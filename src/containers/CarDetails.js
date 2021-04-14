@@ -17,7 +17,7 @@ const CarDetails = ({ currentUser, isAdmin }) => {
 
   return (
     <div>
-      <h2>Hey Car details</h2>
+      <h2>CAR DETAILS</h2>
       {isPending && <span>Loading...</span>}
       {error && <span>{error}</span>}
       {car.status === 'AD' && <h1>You do not belong there, sign in please!</h1>}
