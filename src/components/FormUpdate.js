@@ -19,7 +19,6 @@ const FormUpdate = ({
   <div>
     <div className="car-form-wrapper">
       <h2>UPDATE CAR</h2>
-      <Button name="Cancel" action={() => history.goBack()} />
 
       <form onSubmit={handleUpdate}>
         <div className="form-group">
@@ -95,6 +94,8 @@ const FormUpdate = ({
         />
       ))}
     </div>
+    <Button name="Cancel" action={() => history.goBack()} />
+    <Button name="Back" action={() => history.goBack()} />
   </div>
 );
 

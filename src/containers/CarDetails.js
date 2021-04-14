@@ -1,15 +1,17 @@
 import { Link, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../components/Button';
 import { deleteCar, getCar } from '../actions/actionCreator';
+import Modal from './Modal';
 
 const CarDetails = ({ currentUser, isAdmin }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const carState = useSelector((state) => state.car);
   const { data: car, isPending, error } = carState;
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getCar(id));
@@ -32,21 +34,16 @@ const CarDetails = ({ currentUser, isAdmin }) => {
           <h1>{car.name}</h1>
           <h1>{car.price}</h1>
           <h3>{car.description}</h3>
+          <Modal open={open} setOpen={setOpen} />
           {isAdmin && (
             <div>
               <Link to={`/admin/cars/${id}/update`}>UPDATE CAR</Link>
-              <Button
-                name="DELETEBTN"
-                action={deleteCar(car.id)}
-              />
+              <Button name="DELETEBTN" action={deleteCar(car.id)} />
             </div>
           )}
           {currentUser && (
             <div>
-              <Button
-                name="BOOK NOW"
-                action={() => alert('BOOK NOW')}
-              />
+              <Button name="BOOK NOW" action={() => setOpen(true)} />
             </div>
           )}
         </div>

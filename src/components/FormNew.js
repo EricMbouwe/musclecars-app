@@ -14,7 +14,6 @@ const FormNew = ({
 }) => (
   <div className="car-form-wrapper">
     <h2>ADD A NEW CAR</h2>
-    <Button name="Cancel" action={() => history.goBack()} />
 
     <form onSubmit={handleSubmit}>
       <div className="form-group">
@@ -46,6 +45,7 @@ const FormNew = ({
       </div>
       <button type="submit">Add Car</button>
     </form>
+    <Button name="Cancel" action={() => history.goBack()} />
   </div>
 );
 
