@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types';
+import history from '../history';
+import Button from './Button';
 
 const FormUpdate = ({
   car,
@@ -17,6 +19,7 @@ const FormUpdate = ({
   <div>
     <div className="car-form-wrapper">
       <h2>UPDATE CAR</h2>
+      <Button name="Cancel" action={() => history.goBack()} />
 
       <form onSubmit={handleUpdate}>
         <div className="form-group">

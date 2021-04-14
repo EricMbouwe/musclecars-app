@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types';
+import history from '../history';
+import Button from './Button';
 
 const FormNew = ({
   handleSubmit,
@@ -12,6 +14,7 @@ const FormNew = ({
 }) => (
   <div className="car-form-wrapper">
     <h2>ADD A NEW CAR</h2>
+    <Button name="Cancel" action={() => history.goBack()} />
 
     <form onSubmit={handleSubmit}>
       <div className="form-group">
