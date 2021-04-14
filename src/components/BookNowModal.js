@@ -1,10 +1,29 @@
-import { Fragment, useRef } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { CalendarIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
+import BookNowForm from './BookNowForm';
+import { addNewAppointment } from '../actions/actionCreator';
 
-export default function BookNowModal({ open, setOpen }) {
+export default function BookNowModal({
+  open,
+  setOpen,
+  dispatch,
+  carID,
+  userID,
+  currUserName,
+  currCarName,
+}) {
   const cancelButtonRef = useRef();
+  const [city, setCity] = useState('');
+  const [date, setDate] = useState('');
+  const [userName, setUserName] = useState(currUserName);
+  const [carName, setCarName] = useState(currCarName);
+
+  const handleSubmit = () => {
+    dispatch(addNewAppointment(city, date, carID, userID));
+    setOpen(false);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -63,11 +82,20 @@ export default function BookNowModal({ open, setOpen }) {
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Are you sure you want to deactivate your account? All of
-                        your data will be permanently removed. This action
-                        cannot be undone.
+                        Fill out this form to book a date to test this car
                       </p>
                     </div>
+
+                    <BookNowForm
+                      userName={userName}
+                      setUserName={setUserName}
+                      carName={carName}
+                      setCarName={setCarName}
+                      city={city}
+                      setCity={setCity}
+                      date={date}
+                      setDate={setDate}
+                    />
                   </div>
                 </div>
               </div>
@@ -75,7 +103,7 @@ export default function BookNowModal({ open, setOpen }) {
                 <button
                   type="button"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={() => setOpen(false)}
+                  onClick={handleSubmit}
                 >
                   Book now
                 </button>
@@ -98,5 +126,10 @@ export default function BookNowModal({ open, setOpen }) {
 
 BookNowModal.propTypes = {
   setOpen: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  carID: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired,
+  currUserName: PropTypes.string.isRequired,
+  currCarName: PropTypes.string.isRequired,
 };

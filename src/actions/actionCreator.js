@@ -224,18 +224,19 @@ export const receivedNewAppointmentData = (response) => ({
   payload: response.data,
 });
 
-export const addNewAppointment = (city, date, carId) => async (dispatch) => {
+export const addNewAppointment = (city, date, carId, userID) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.post(
-      'http://localhost:3001/api/v1/appointments',
+      `http://localhost:3001/api/v1/users/${userID}/appointments`,
       {
         city,
-        date,
-        carId,
+        appointment_date: date,
+        car_id: carId,
       },
       { withCredentials: true },
     );
+    console.log('RES:', response);
     dispatch(receivedNewAppointmentData(response));
   } catch (error) {
     dispatch(sendingFailed());
@@ -275,7 +276,6 @@ export const deleteAppointment = (id, userID) => async (dispatch) => {
       { withCredentials: true },
     );
     dispatch(getAppointmentList(userID));
-    // history.goBack();
   } catch (error) {
     dispatch(sendingFailed());
   }

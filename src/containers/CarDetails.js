@@ -8,9 +8,9 @@ import BookNowModal from '../components/BookNowModal';
 import DeleteModal from '../components/DeleteModal';
 
 const CarDetails = ({ currentUser, isAdmin }) => {
-  const { id } = useParams();
   const dispatch = useDispatch();
   const carState = useSelector((state) => state.car);
+  const { id } = useParams();
   const { data: car, isPending, error } = carState;
   const [open, setOpen] = useState(false);
   const [openDel, setOpenDel] = useState(false);
@@ -36,7 +36,15 @@ const CarDetails = ({ currentUser, isAdmin }) => {
           <h1>{car.name}</h1>
           <h1>{car.price}</h1>
           <h3>{car.description}</h3>
-          <BookNowModal open={open} setOpen={setOpen} />
+          <BookNowModal
+            open={open}
+            setOpen={setOpen}
+            dispatch={dispatch}
+            carID={id}
+            userID={currentUser.id}
+            currCarName={car.name}
+            currUserName={currentUser.name}
+          />
           <DeleteModal
             open={openDel}
             setOpen={setOpenDel}
