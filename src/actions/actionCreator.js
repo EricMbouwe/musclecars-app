@@ -135,6 +135,57 @@ export const getCar = (id) => async (dispatch) => {
   }
 };
 
+export const receivedNewCarData = (response) => ({
+  type: actions.ADD_CAR,
+  payload: response.data,
+});
+
+export const addNewCar = (name, price, description) => async (dispatch) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.post(
+      'http://localhost:3001/admin/cars',
+      {
+        name,
+        price,
+        description,
+      },
+      { withCredentials: true },
+    );
+    dispatch(receivedNewCarData(response));
+    console.log('RES:', response);
+    history.push('/');
+  } catch (error) {
+    dispatch(sendingFailed());
+  }
+};
+
+export const receivedUpdatedCarData = (response) => ({
+  type: actions.UPDATE_CAR,
+  payload: response.data,
+});
+
+export const updateCar = (name, price, description, carID) => async (
+  dispatch,
+) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.patch(
+      `http://localhost:3001/admin/cars/${carID}`,
+      {
+        name,
+        price,
+        description,
+      },
+      { withCredentials: true },
+    );
+    dispatch(receivedUpdatedCarData(response));
+    console.log('RESPONSE:', response);
+  } catch (error) {
+    dispatch(sendingFailed());
+  }
+};
+
 export const deleteCar = (id) => async (dispatch) => {
   try {
     dispatch(sendingData());
@@ -165,5 +216,85 @@ export const getAppointmentList = (id) => async (dispatch) => {
     dispatch(receivedAppointmentListData(response));
   } catch (error) {
     dispatch(requestingFailed());
+  }
+};
+
+export const receivedNewAppointmentData = (response) => ({
+  type: actions.ADD_APPOINTMENT,
+  payload: response.data,
+});
+
+export const addNewAppointment = (city, date, carId) => async (dispatch) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.post(
+      'http://localhost:3001/api/v1/appointments',
+      {
+        city,
+        date,
+        carId,
+      },
+      { withCredentials: true },
+    );
+    dispatch(receivedNewAppointmentData(response));
+  } catch (error) {
+    dispatch(sendingFailed());
+  }
+};
+
+export const receivedUpdatedAppointmentData = (response) => ({
+  type: actions.UPDATE_APPOINTMENT,
+  payload: response.data,
+});
+
+export const updateAppointment = (city, date, carID, userID, id) => async (
+  dispatch,
+) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.patch(
+      `http://localhost:3001/api/v1/users/${userID}/appointments/${id}`,
+      {
+        city,
+        date,
+        carID,
+      },
+      { withCredentials: true },
+    );
+    dispatch(receivedUpdatedAppointmentData(response));
+  } catch (error) {
+    dispatch(sendingFailed());
+  }
+};
+
+export const deleteAppointment = (id, userID) => async (dispatch) => {
+  try {
+    dispatch(sendingData());
+    await axios.delete(
+      `http://localhost:3001/api/v1/users/${userID}/appointments/${id}`,
+      { withCredentials: true },
+    );
+    dispatch(getAppointmentList(userID));
+    // history.goBack();
+  } catch (error) {
+    dispatch(sendingFailed());
+  }
+};
+
+export const addNewPicture = (url, carID) => async (dispatch) => {
+  try {
+    dispatch(sendingData());
+    const response = await axios.post(
+      `http://localhost:3001/admin/cars/${carID}/pictures`,
+      {
+        url,
+      },
+      {
+        withCredentials: true,
+      },
+    );
+    console.log('RES:', response);
+  } catch (error) {
+    dispatch(sendingFailed());
   }
 };

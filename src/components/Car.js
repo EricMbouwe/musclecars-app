@@ -15,7 +15,6 @@ const Car = ({ car, isAdmin }) => (
     </Link>
     {isAdmin && (
       <div>
-        <Button name="UPDATEBTN" action={() => alert('update car')} />
         <Button name="DELETEBTN" action={deleteCar(car.id)} />
       </div>
     )}

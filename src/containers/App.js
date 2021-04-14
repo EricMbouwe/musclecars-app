@@ -37,6 +37,7 @@ function App() {
           dispatch={dispatch}
           currentUser={user}
           loggedIn={loggedIn}
+          isAdmin={isAdmin}
         />
         <Switch>
           <Route exact path="/">
@@ -47,18 +48,27 @@ function App() {
             />
           </Route>
           <Route exact path="/admin" component={AdminLogin} />
-          <Route exact path="/admin/cars/new" component={CarRegistration} />
+          <Route exact path="/admin/cars/new">
+            <CarRegistration
+              dispatch={dispatch}
+              currentUser={user}
+            />
+          </Route>
+          <Route exact path="/admin/cars/:id/update">
+            <CarRegistration
+              dispatch={dispatch}
+              currentUser={user}
+            />
+          </Route>
           <Route exact path="/signup">
             <Registration
               dispatch={dispatch}
-              loggedInStatus={loggedInStatus}
               currentUser={user}
             />
           </Route>
           <Route exact path="/login">
             <Login
               dispatch={dispatch}
-              loggedInStatus={loggedInStatus}
               currentUser={user}
             />
           </Route>

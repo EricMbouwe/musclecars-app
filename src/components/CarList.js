@@ -6,7 +6,7 @@ const CarList = ({
 }) => (
   <div>
     <h2>THE CAR LIST</h2>
-    {isAdmin && <button type="button">New car</button>}
+    {isAdmin && <button type="button">ADMIN USER</button>}
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
     {cars

@@ -7,8 +7,6 @@ const Registration = ({ dispatch }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [errors, setErrors] = useState('');
-  // const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();

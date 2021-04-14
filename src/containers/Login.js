@@ -6,8 +6,6 @@ import { signIn } from '../actions/actionCreator';
 const Login = ({ dispatch }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [errors, setErrors] = useState('');
-  // const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();

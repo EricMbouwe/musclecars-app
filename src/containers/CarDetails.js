@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -34,10 +34,7 @@ const CarDetails = ({ currentUser, isAdmin }) => {
           <h3>{car.description}</h3>
           {isAdmin && (
             <div>
-              <Button
-                name="UPDATEBTN"
-                action={() => alert('update car')}
-              />
+              <Link to={`/admin/cars/${id}/update`}>UPDATE CAR</Link>
               <Button
                 name="DELETEBTN"
                 action={deleteCar(car.id)}
