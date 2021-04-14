@@ -294,6 +294,7 @@ export const addNewPicture = (url, carID) => async (dispatch) => {
       },
     );
     console.log('RES:', response);
+    window.location.reload();
   } catch (error) {
     dispatch(sendingFailed());
   }
