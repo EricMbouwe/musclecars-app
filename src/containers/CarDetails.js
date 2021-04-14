@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../components/Button';
 import { deleteCar, getCar } from '../actions/actionCreator';
-import Modal from './Modal';
+import BookNowModal from '../components/BookNowModal';
+import DeleteModal from '../components/DeleteModal';
 
 const CarDetails = ({ currentUser, isAdmin }) => {
   const { id } = useParams();
@@ -12,6 +13,7 @@ const CarDetails = ({ currentUser, isAdmin }) => {
   const carState = useSelector((state) => state.car);
   const { data: car, isPending, error } = carState;
   const [open, setOpen] = useState(false);
+  const [openDel, setOpenDel] = useState(false);
 
   useEffect(() => {
     dispatch(getCar(id));
@@ -34,16 +36,35 @@ const CarDetails = ({ currentUser, isAdmin }) => {
           <h1>{car.name}</h1>
           <h1>{car.price}</h1>
           <h3>{car.description}</h3>
-          <Modal open={open} setOpen={setOpen} />
-          {isAdmin && (
-            <div>
-              <Link to={`/admin/cars/${id}/update`}>UPDATE CAR</Link>
-              <Button name="DELETEBTN" action={deleteCar(car.id)} />
-            </div>
-          )}
+          <BookNowModal open={open} setOpen={setOpen} />
+          <DeleteModal
+            open={openDel}
+            setOpen={setOpenDel}
+            deleteObj={deleteCar}
+            id={id}
+          />
           {currentUser && (
             <div>
-              <Button name="BOOK NOW" action={() => setOpen(true)} />
+              <Button
+                name="BOOK NOW"
+                action={() => setOpen(true)}
+                className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+              />
+            </div>
+          )}
+          {isAdmin && (
+            <div>
+              <Link
+                to={`/admin/cars/${id}/update`}
+                className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+              >
+                UPDATE CAR
+              </Link>
+              <Button
+                name="DELETEBTN"
+                action={() => setOpenDel(true)}
+                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+              />
             </div>
           )}
         </div>

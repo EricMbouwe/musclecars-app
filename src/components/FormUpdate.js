@@ -95,7 +95,6 @@ const FormUpdate = ({
       ))}
     </div>
     <Button name="Cancel" action={() => history.goBack()} />
-    <Button name="Back" action={() => history.goBack()} />
   </div>
 );
 
