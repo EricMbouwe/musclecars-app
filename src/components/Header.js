@@ -13,7 +13,7 @@ const Header = ({
         <NavLink to="/signup">Sign up</NavLink>
         {loggedIn && <h2>{currentUser.name}</h2>}
         {loggedIn && <NavLink to={`/users/${currentUser.id}/appointments`}>My appointments</NavLink>}
-        {isAdmin && <NavLink to="/admin/cars/new">NEW CAR</NavLink>}
+        {isAdmin && <NavLink to="/admin/cars/new">New Car</NavLink>}
         <NavLink to="/" onClick={() => dispatch(logOut())}>
           logout
         </NavLink>
