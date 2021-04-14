@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { CalendarIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
-import BookNowForm from './BookNowForm';
+import BookNowForm from '../components/BookNowForm';
 import { addNewAppointment } from '../actions/actionCreator';
 
 export default function BookNowModal({
@@ -17,11 +17,12 @@ export default function BookNowModal({
   const cancelButtonRef = useRef();
   const [city, setCity] = useState('');
   const [date, setDate] = useState('');
-  const [userName, setUserName] = useState(currUserName);
-  const [carName, setCarName] = useState(currCarName);
+  const [userName, setUserName] = useState(currUserName || '');
+  const [carName, setCarName] = useState(currCarName || '');
 
-  const handleSubmit = () => {
-    dispatch(addNewAppointment(city, date, carID, userID));
+  const handleFormSubmit = () => {
+    const userId = userID.toString();
+    dispatch(addNewAppointment(city, date, carID, userId));
     setOpen(false);
   };
 
@@ -103,7 +104,7 @@ export default function BookNowModal({
                 <button
                   type="button"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={handleSubmit}
+                  onClick={handleFormSubmit}
                 >
                   Book now
                 </button>
@@ -129,7 +130,7 @@ BookNowModal.propTypes = {
   dispatch: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   carID: PropTypes.string.isRequired,
-  userID: PropTypes.string.isRequired,
+  userID: PropTypes.number.isRequired,
   currUserName: PropTypes.string.isRequired,
   currCarName: PropTypes.string.isRequired,
 };

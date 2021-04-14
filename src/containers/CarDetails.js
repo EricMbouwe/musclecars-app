@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../components/Button';
 import { deleteCar, getCar } from '../actions/actionCreator';
-import BookNowModal from '../components/BookNowModal';
+import BookNowModal from './BookNowModal';
 import DeleteModal from '../components/DeleteModal';
 
 const CarDetails = ({ currentUser, isAdmin }) => {
