@@ -18,7 +18,7 @@ export const addNewUser = (name, email, password) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.post(
-      'http://localhost:3001/api/v1/users',
+      'https://musclecars-api.herokuapp.com/api/v1/users',
       {
         name,
         email,
@@ -45,7 +45,7 @@ export const signIn = (email, password) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.post(
-      'http://localhost:3001/sessions',
+      'https://musclecars-api.herokuapp.com/sessions',
       {
         email,
         password,
@@ -69,9 +69,12 @@ export const receivedLoggedInStatusData = (response) => ({
 export const checkLoggedInStatus = () => async (dispatch) => {
   try {
     dispatch(requestingData());
-    const response = await axios.get('http://localhost:3001/logged_in', {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      'https://musclecars-api.herokuapp.com/logged_in',
+      {
+        withCredentials: true,
+      },
+    );
     dispatch(receivedLoggedInStatusData(response));
   } catch (error) {
     dispatch(requestingFailed());
@@ -87,9 +90,12 @@ export const receivedLogOutStatusData = (response) => ({
 export const logOut = () => async (dispatch) => {
   try {
     dispatch(sendingData());
-    const response = await axios.delete('http://localhost:3001/logout', {
-      withCredentials: true,
-    });
+    const response = await axios.delete(
+      'https://musclecars-api.herokuapp.com/logout',
+      {
+        withCredentials: true,
+      },
+    );
     dispatch(receivedLogOutStatusData(response));
   } catch (error) {
     dispatch(sendingFailed());
@@ -105,9 +111,12 @@ export const receivedCarListData = (response) => ({
 export const getCarList = () => async (dispatch) => {
   try {
     dispatch(requestingData());
-    const response = await axios.get('http://localhost:3001/api/v1/cars', {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      'https://musclecars-api.herokuapp.com/api/v1/cars',
+      {
+        withCredentials: true,
+      },
+    );
     dispatch(receivedCarListData(response));
   } catch (error) {
     dispatch(requestingFailed());
@@ -124,7 +133,7 @@ export const getCar = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
     const response = await axios.get(
-      `http://localhost:3001/api/v1/cars/${id}`,
+      `https://musclecars-api.herokuapp.com/api/v1/cars/${id}`,
       {
         withCredentials: true,
       },
@@ -144,7 +153,7 @@ export const addNewCar = (name, price, description) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.post(
-      'http://localhost:3001/admin/cars',
+      'https://musclecars-api.herokuapp.com/admin/cars',
       {
         name,
         price,
@@ -153,7 +162,6 @@ export const addNewCar = (name, price, description) => async (dispatch) => {
       { withCredentials: true },
     );
     dispatch(receivedNewCarData(response));
-    console.log('RES:', response);
     history.push('/');
   } catch (error) {
     dispatch(sendingFailed());
@@ -171,7 +179,7 @@ export const updateCar = (name, price, description, carID) => async (
   try {
     dispatch(sendingData());
     const response = await axios.patch(
-      `http://localhost:3001/admin/cars/${carID}`,
+      `https://musclecars-api.herokuapp.com/admin/cars/${carID}`,
       {
         name,
         price,
@@ -180,7 +188,6 @@ export const updateCar = (name, price, description, carID) => async (
       { withCredentials: true },
     );
     dispatch(receivedUpdatedCarData(response));
-    console.log('RESPONSE:', response);
   } catch (error) {
     dispatch(sendingFailed());
   }
@@ -190,7 +197,7 @@ export const deleteCar = (id) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.delete(
-      `http://localhost:3001/admin/cars/${id}`,
+      `https://musclecars-api.herokuapp.com/admin/cars/${id}`,
       { withCredentials: true },
     );
     dispatch(getCarList(response));
@@ -210,7 +217,7 @@ export const getAppointmentList = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
     const response = await axios.get(
-      `http://localhost:3001/api/v1/users/${id}/appointments`,
+      `https://musclecars-api.herokuapp.com/api/v1/users/${id}/appointments`,
       { withCredentials: true },
     );
     dispatch(receivedAppointmentListData(response));
@@ -224,11 +231,13 @@ export const receivedNewAppointmentData = (response) => ({
   payload: response.data,
 });
 
-export const addNewAppointment = (city, date, carId, userID) => async (dispatch) => {
+export const addNewAppointment = (city, date, carId, userID) => async (
+  dispatch,
+) => {
   try {
     dispatch(sendingData());
     const response = await axios.post(
-      `http://localhost:3001/api/v1/users/${userID}/appointments`,
+      `https://musclecars-api.herokuapp.com/api/v1/users/${userID}/appointments`,
       {
         city,
         appointment_date: date,
@@ -236,7 +245,6 @@ export const addNewAppointment = (city, date, carId, userID) => async (dispatch)
       },
       { withCredentials: true },
     );
-    console.log('RES:', response);
     dispatch(receivedNewAppointmentData(response));
   } catch (error) {
     dispatch(sendingFailed());
@@ -254,7 +262,7 @@ export const updateAppointment = (city, date, carID, userID, id) => async (
   try {
     dispatch(sendingData());
     const response = await axios.patch(
-      `http://localhost:3001/api/v1/users/${userID}/appointments/${id}`,
+      `https://musclecars-api.herokuapp.com/api/v1/users/${userID}/appointments/${id}`,
       {
         city,
         date,
@@ -272,7 +280,7 @@ export const deleteAppointment = (id, userID) => async (dispatch) => {
   try {
     dispatch(sendingData());
     await axios.delete(
-      `http://localhost:3001/api/v1/users/${userID}/appointments/${id}`,
+      `https://musclecars-api.herokuapp.com/api/v1/users/${userID}/appointments/${id}`,
       { withCredentials: true },
     );
     dispatch(getAppointmentList(userID));
@@ -284,8 +292,8 @@ export const deleteAppointment = (id, userID) => async (dispatch) => {
 export const addNewPicture = (url, carID) => async (dispatch) => {
   try {
     dispatch(sendingData());
-    const response = await axios.post(
-      `http://localhost:3001/admin/cars/${carID}/pictures`,
+    await axios.post(
+      `https://musclecars-api.herokuapp.com/admin/cars/${carID}/pictures`,
       {
         url,
       },
@@ -293,7 +301,6 @@ export const addNewPicture = (url, carID) => async (dispatch) => {
         withCredentials: true,
       },
     );
-    console.log('RES:', response);
     window.location.reload();
   } catch (error) {
     dispatch(sendingFailed());

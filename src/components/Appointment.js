@@ -13,10 +13,6 @@ const Appointment = ({ appointment }) => (
     />
     <h1>{appointment.city.toUpperCase()}</h1>
     <h2>{appointment.appointment_date}</h2>
-    <div>
-      <Button name="UPDATEBTN" action={() => alert('Update Appointment')} />
-      <Button name="DELETEBTN" action={() => alert('Delete appointment')} />
-    </div>
     <Button name="BACK" action={() => history.goBack()} />
   </div>
 );
