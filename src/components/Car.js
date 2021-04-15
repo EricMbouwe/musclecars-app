@@ -4,17 +4,15 @@ import { deleteCar } from '../actions/actionCreator';
 import Button from './Button';
 
 const Car = ({ car, isAdmin }) => (
-  <div>
+  <div className="mx-5">
     <Link to={`cars/${car.id}`}>
-      <div>
-        <img
-          src={car?.pictures[0]?.url}
-          alt={car.name}
-          width="250"
-          height="200"
-          className="border border-gray-300"
-        />
-      </div>
+      <img
+        src={car?.pictures[0]?.url}
+        alt={car.name}
+        width="250"
+        height="200"
+        className="border border-gray-300 mx-auto my-4"
+      />
       <h1>{car.name}</h1>
       <span>{car.price}</span>
       <span>$</span>

@@ -6,18 +6,44 @@ const Header = ({
   dispatch, currentUser, loggedIn, isAdmin,
 }) => (
   <header>
-    <nav>
+    <nav className="flex justify-center py-4">
       <Link to="/">Logo</Link>
-      <div className="nav-links">
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/signup">Sign up</NavLink>
-        {loggedIn && <h2>{currentUser.name}</h2>}
-        {loggedIn && <NavLink to={`/users/${currentUser.id}/appointments`}>My appointments</NavLink>}
-        {isAdmin && <NavLink to="/admin/cars/new">New Car</NavLink>}
-        <NavLink to="/" onClick={() => dispatch(logOut())}>
-          Logout
-        </NavLink>
-      </div>
+      <ul className="nav-links ml-3 flex">
+        {!loggedIn && (
+          <li className="mr-2">
+            <NavLink to="/login">Login</NavLink>
+          </li>
+        )}
+        {!loggedIn && (
+          <li className="mr-2">
+            <NavLink to="/signup">Sign up</NavLink>
+          </li>
+        )}
+        {loggedIn && (
+          <li className="mr-2">
+            <NavLink to={`/users/${currentUser.id}/appointments`}>
+              My appointments
+            </NavLink>
+          </li>
+        )}
+        {isAdmin && (
+          <li className="mr-2">
+            <NavLink to="/admin/cars/new">New Car</NavLink>
+          </li>
+        )}
+        {loggedIn && (
+          <li className="mr-2 font-bold">
+            <h2>{currentUser.name}</h2>
+          </li>
+        )}
+        {loggedIn && (
+          <li>
+            <NavLink to="/" onClick={() => dispatch(logOut())}>
+              Logout
+            </NavLink>
+          </li>
+        )}
+      </ul>
     </nav>
   </header>
 );

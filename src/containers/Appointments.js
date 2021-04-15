@@ -15,6 +15,7 @@ const Appointments = ({ currentUser }) => {
 
   return (
     <div>
+      <h2 className="my-5">MY APPOINTMENTS LIST</h2>
       <AppointmentList
         appointments={data}
         isPending={isPending}

@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import Appointment from './Appointment';
 
 const AppointmentList = ({ appointments, isPending, error }) => (
-  <div>
-    <h2>MY APPOINTMENTS LIST</h2>
+  <div className="car-list flex flex-wrap mt-5">
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
     {appointments.length > 0

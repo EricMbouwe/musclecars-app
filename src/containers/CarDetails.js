@@ -32,11 +32,11 @@ const CarDetails = ({ currentUser, isAdmin }) => {
             alt={car.name}
             width="250"
             height="200"
-            className="border border-gray-300"
+            className="border border-gray-300 mx-auto my-5"
           />
           <h1>{car.name}</h1>
           <h1>{car.price}</h1>
-          <h3>{car.description}</h3>
+          <h3 className="my-5">{car.description}</h3>
           <BookNowModal
             open={open}
             setOpen={setOpen}
@@ -53,13 +53,11 @@ const CarDetails = ({ currentUser, isAdmin }) => {
             id={id}
           />
           {currentUser && (
-            <div>
-              <Button
-                name="BOOK NOW"
-                action={() => setOpen(true)}
-                className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-              />
-            </div>
+            <Button
+              name="BOOK NOW"
+              action={() => setOpen(true)}
+              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+            />
           )}
           {isAdmin && (
             <div>

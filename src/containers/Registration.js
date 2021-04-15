@@ -15,34 +15,37 @@ const Registration = ({ dispatch }) => {
 
   return (
     <div>
-      <h2>SIGN UP</h2>
+      <h2 className="mt-5">SIGN UP</h2>
 
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group mt-3">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="ml-3 p-1 border border-gray-300 text-gray-500"
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mt-3">
           <label htmlFor="name">Email</label>
           <input
             type="text"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="ml-3 p-1 border border-gray-300 text-gray-500"
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-3">
           <label htmlFor="name">Password</label>
           <input
             type="text"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="ml-3 p-1 border border-gray-300 text-gray-500"
           />
         </div>
         <button type="submit">Register</button>
