@@ -9,11 +9,12 @@ const Appointment = ({ appointment }) => (
       alt={appointment.name}
       width="250"
       height="200"
+      className="border border-gray-300"
     />
     <h1>{appointment.city.toUpperCase()}</h1>
     <h2>{appointment.appointment_date}</h2>
     <div>
-      <Button name="UPDATEBTN" action={() => alert('Update car')} />
+      <Button name="UPDATEBTN" action={() => alert('Update Appointment')} />
       <Button name="DELETEBTN" action={() => alert('Delete appointment')} />
     </div>
     <Button name="BACK" action={() => history.goBack()} />

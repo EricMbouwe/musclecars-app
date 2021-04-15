@@ -7,7 +7,13 @@ const Car = ({ car, isAdmin }) => (
   <div>
     <Link to={`cars/${car.id}`}>
       <div>
-        <img src={car?.pictures[0]?.url} alt={car.name} width="250" height="200" />
+        <img
+          src={car?.pictures[0]?.url}
+          alt={car.name}
+          width="250"
+          height="200"
+          className="border border-gray-300"
+        />
       </div>
       <h1>{car.name}</h1>
       <span>{car.price}</span>

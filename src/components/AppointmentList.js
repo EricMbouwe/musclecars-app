@@ -6,7 +6,7 @@ const AppointmentList = ({ appointments, isPending, error }) => (
     <h2>MY APPOINTMENTS LIST</h2>
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
-    {appointments
+    {appointments.length > 0
       && appointments.map((appointment) => (
         <Appointment key={appointment.id} appointment={appointment} />
       ))}

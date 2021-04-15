@@ -32,6 +32,7 @@ const CarDetails = ({ currentUser, isAdmin }) => {
             alt={car.name}
             width="250"
             height="200"
+            className="border border-gray-300"
           />
           <h1>{car.name}</h1>
           <h1>{car.price}</h1>

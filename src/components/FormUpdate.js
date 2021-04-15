@@ -17,35 +17,38 @@ const FormUpdate = ({
   url,
 }) => (
   <div>
-    <div className="car-form-wrapper">
+    <div className="car-form-wrapper mt-5">
       <h2>UPDATE CAR</h2>
 
       <form onSubmit={handleUpdate}>
-        <div className="form-group">
+        <div className="form-group mt-3">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
             value={carName}
             onChange={(e) => setCarName(e.target.value)}
+            className="ml-3 p-1 border border-gray-300 text-gray-500"
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mt-3">
           <label htmlFor="name">price</label>
           <input
             type="text"
             id="email"
             value={carPrice}
             onChange={(e) => setCarPrice(e.target.value)}
+            className="ml-3 p-1 border border-gray-300 text-gray-500"
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-3">
           <label htmlFor="name">Description</label>
           <textarea
             type="text"
             id="password"
             value={carDescription}
             onChange={(e) => setCarDescription(e.target.value)}
+            className="ml-3 p-1 border border-gray-300 text-gray-500"
           />
         </div>
         <button type="submit">Update Car</button>
@@ -53,7 +56,7 @@ const FormUpdate = ({
     </div>
 
     <div className="pictures-wrapper">
-      <h2>ADD PICTURES</h2>
+      <h2 className="my-2">ADD PICTURES</h2>
 
       <div className="picture-form">
         <div
@@ -74,25 +77,27 @@ const FormUpdate = ({
             id="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
+            className="mx-3 p-1 border border-gray-300 text-gray-500"
           />
           <button type="submit">Add picture</button>
         </form>
       </div>
     </div>
 
-    <div className="car-pictures">
-      {car.pictures?.map((pic) => (
-        <img
-          key={pic.id}
-          src={pic.url}
-          alt="preview"
-          style={{
-            width: '250px',
-            height: '200px',
-            border: '1px solid #ccc',
-          }}
-        />
-      ))}
+    <div className="car-pictures-wrapper">
+      <h1 className="my-2">CAR PICTURES</h1>
+      <div className="pictures my-5 flex">
+        {car.pictures?.map((pic) => (
+          <img
+            key={pic.id}
+            src={pic.url}
+            alt="preview"
+            width="250"
+            height="200"
+            className="border border-gray-300"
+          />
+        ))}
+      </div>
     </div>
     <Button name="Cancel" action={() => history.goBack()} />
   </div>
