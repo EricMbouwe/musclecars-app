@@ -17,6 +17,7 @@ import CarRegistration from './CarRegistration';
 import Login from './Login';
 import { checkLoggedInStatus } from '../actions/actionCreator';
 import history from '../history';
+import PrivateRoute from '../components/PrivateRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -72,13 +73,13 @@ function App() {
               currentUser={user}
             />
           </Route>
-          <Route exact path="/cars/:id">
+          <PrivateRoute exact path="/cars/:id" isAuthenticated={loggedIn}>
             <CarDetails
               dispatch={dispatch}
               currentUser={user}
               isAdmin={isAdmin}
             />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/users/:id/appointments">
             <Appointments
               dispatch={dispatch}
