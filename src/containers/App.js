@@ -49,18 +49,18 @@ function App() {
             />
           </Route>
           <Route exact path="/admin" component={AdminLogin} />
-          <Route exact path="/admin/cars/new">
+          <PrivateRoute exact path="/admin/cars/new" isAuthenticated={isAdmin} l="A">
             <CarRegistration
               dispatch={dispatch}
               currentUser={user}
             />
-          </Route>
-          <Route exact path="/admin/cars/:id/update">
+          </PrivateRoute>
+          <PrivateRoute exact path="/admin/cars/:id/update" isAuthenticated={isAdmin} l="A">
             <CarRegistration
               dispatch={dispatch}
               currentUser={user}
             />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/signup">
             <Registration
               dispatch={dispatch}
@@ -73,7 +73,7 @@ function App() {
               currentUser={user}
             />
           </Route>
-          <PrivateRoute exact path="/cars/:id" isAuthenticated={loggedIn}>
+          <PrivateRoute exact path="/cars/:id" isAuthenticated={loggedIn} l="L">
             <CarDetails
               dispatch={dispatch}
               currentUser={user}
