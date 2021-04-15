@@ -5,8 +5,8 @@ import Button from './Button';
 const Appointment = ({ appointment }) => (
   <div className="mx-5">
     <img
-      src={appointment.car.pictures[0]?.url}
-      alt={appointment.name}
+      src={appointment?.car?.pictures[0]?.url}
+      alt={appointment.city}
       width="250"
       height="200"
       className="border border-gray-300 mx-auto my-4"
