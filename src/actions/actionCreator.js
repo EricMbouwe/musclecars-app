@@ -45,7 +45,7 @@ export const signIn = (email, password) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.post(
-      'http://localhost:3001/sessions',
+      'https://musclecars-api.herokuapp.com/sessions',
       {
         email,
         password,
