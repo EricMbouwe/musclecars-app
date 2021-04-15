@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import history from '../history';
-import Button from './Button';
 
 const Appointment = ({ appointment }) => (
   <div className="mx-5">
@@ -13,7 +11,6 @@ const Appointment = ({ appointment }) => (
     />
     <h1>{appointment.city.toUpperCase()}</h1>
     <h2>{appointment.appointment_date}</h2>
-    <Button name="BACK" action={() => history.goBack()} />
   </div>
 );
 

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppointmentList from '../components/AppointmentList';
 import { getAppointmentList } from '../actions/actionCreator';
+import history from '../history';
+import Button from '../components/Button';
 
 const Appointments = ({ currentUser }) => {
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ const Appointments = ({ currentUser }) => {
         isPending={isPending}
         error={error}
       />
+      <Button name="BACK" action={() => history.goBack()} />
     </div>
   );
 };
