@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function PrivateRoute({
   children,
   isAuthenticated,
-  l,
+  privatePath,
   ...rest
 }) {
   return (
@@ -14,7 +14,7 @@ export default function PrivateRoute({
       render={() => (isAuthenticated === true ? (
         children
       ) : (
-        <Redirect to={l === 'L' ? '/login' : '/admin'} />
+        <Redirect to={privatePath === 'L' ? '/login' : '/admin'} />
       ))}
     />
   );
@@ -23,5 +23,5 @@ export default function PrivateRoute({
 PrivateRoute.propTypes = {
   children: PropTypes.node.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  l: PropTypes.string.isRequired,
+  privatePath: PropTypes.string.isRequired,
 };

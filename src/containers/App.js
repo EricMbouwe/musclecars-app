@@ -42,38 +42,37 @@ function App() {
         />
         <Switch>
           <Route exact path="/">
-            <Home
-              dispatch={dispatch}
-              currentUser={user}
-              isAdmin={isAdmin}
-            />
+            <Home dispatch={dispatch} currentUser={user} isAdmin={isAdmin} />
           </Route>
           <Route exact path="/admin" component={AdminLogin} />
-          <PrivateRoute exact path="/admin/cars/new" isAuthenticated={isAdmin} l="A">
-            <CarRegistration
-              dispatch={dispatch}
-              currentUser={user}
-            />
+          <PrivateRoute
+            exact
+            path="/admin/cars/new"
+            isAuthenticated={isAdmin}
+            privatePath="A"
+          >
+            <CarRegistration dispatch={dispatch} currentUser={user} />
           </PrivateRoute>
-          <PrivateRoute exact path="/admin/cars/:id/update" isAuthenticated={isAdmin} l="A">
-            <CarRegistration
-              dispatch={dispatch}
-              currentUser={user}
-            />
+          <PrivateRoute
+            exact
+            path="/admin/cars/:id/update"
+            isAuthenticated={isAdmin}
+            privatePath="A"
+          >
+            <CarRegistration dispatch={dispatch} currentUser={user} />
           </PrivateRoute>
           <Route exact path="/signup">
-            <Registration
-              dispatch={dispatch}
-              currentUser={user}
-            />
+            <Registration dispatch={dispatch} currentUser={user} />
           </Route>
           <Route exact path="/login">
-            <Login
-              dispatch={dispatch}
-              currentUser={user}
-            />
+            <Login dispatch={dispatch} currentUser={user} />
           </Route>
-          <PrivateRoute exact path="/cars/:id" isAuthenticated={loggedIn} l="L">
+          <PrivateRoute
+            exact
+            path="/cars/:id"
+            isAuthenticated={loggedIn}
+            privatePath="L"
+          >
             <CarDetails
               dispatch={dispatch}
               currentUser={user}
