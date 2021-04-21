@@ -5,7 +5,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CarDetails from './CarDetails';
 import Home from './Home';
 import Appointments from './Appointments';
@@ -21,28 +21,35 @@ import PrivateRoute from '../components/PrivateRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const appState = useSelector((state) => state.app);
-  const { loggedInStatus, user } = appState;
 
   useEffect(() => {
     dispatch(checkLoggedInStatus());
   }, []);
 
-  const loggedIn = loggedInStatus === 'LOGGED_IN';
-  const isAdmin = user.role === 'admin';
+  const localLogStatus = localStorage.getItem('loggedStatus');
+  const localUser = JSON.parse(localStorage.getItem('user'));
+
+  // console.log('LOCAL-LOG-STATUS:', localLogStatus);
+  // console.log('USER:', localUser);
+  // console.log('USERNAME:', localUser?.name);
+  // console.log('SERVER-LOG-STATUS:', loggedInStatus);
+
+  const userRole = localUser?.role;
+  const loggedIn = localLogStatus === 'LOGGED_IN';
+  const isAdmin = userRole === 'admin';
 
   return (
     <div className="App">
       <Router history={history}>
         <Header
           dispatch={dispatch}
-          currentUser={user}
+          currentUser={localUser}
           loggedIn={loggedIn}
           isAdmin={isAdmin}
         />
         <Switch>
           <Route exact path="/">
-            <Home dispatch={dispatch} currentUser={user} isAdmin={isAdmin} />
+            <Home dispatch={dispatch} currentUser={localUser} isAdmin={isAdmin} />
           </Route>
           <Route exact path="/admin" component={AdminLogin} />
           <PrivateRoute
@@ -51,7 +58,7 @@ function App() {
             isAuthenticated={isAdmin}
             privatePath="A"
           >
-            <CarRegistration dispatch={dispatch} currentUser={user} />
+            <CarRegistration dispatch={dispatch} currentUser={localUser} />
           </PrivateRoute>
           <PrivateRoute
             exact
@@ -59,13 +66,13 @@ function App() {
             isAuthenticated={isAdmin}
             privatePath="A"
           >
-            <CarRegistration dispatch={dispatch} currentUser={user} />
+            <CarRegistration dispatch={dispatch} currentUser={localUser} />
           </PrivateRoute>
           <Route exact path="/signup">
-            <Registration dispatch={dispatch} currentUser={user} />
+            <Registration dispatch={dispatch} currentUser={localUser} />
           </Route>
           <Route exact path="/login">
-            <Login dispatch={dispatch} currentUser={user} />
+            <Login dispatch={dispatch} currentUser={localUser} />
           </Route>
           <PrivateRoute
             exact
@@ -75,14 +82,14 @@ function App() {
           >
             <CarDetails
               dispatch={dispatch}
-              currentUser={user}
+              currentUser={localUser}
               isAdmin={isAdmin}
             />
           </PrivateRoute>
           <Route exact path="/users/:id/appointments">
             <Appointments
               dispatch={dispatch}
-              currentUser={user}
+              currentUser={localUser}
               isAdmin={isAdmin}
             />
           </Route>
