@@ -28,8 +28,12 @@ const Appointments = ({ currentUser }) => {
   );
 };
 
+Appointments.defaultProps = {
+  currentUser: null,
+};
+
 Appointments.propTypes = {
-  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default Appointments;

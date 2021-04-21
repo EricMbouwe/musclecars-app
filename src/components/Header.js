@@ -48,9 +48,13 @@ const Header = ({
   </header>
 );
 
+Header.defaultProps = {
+  currentUser: null,
+};
+
 Header.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.object]),
   loggedIn: PropTypes.bool.isRequired,
   isAdmin: PropTypes.bool.isRequired,
 };

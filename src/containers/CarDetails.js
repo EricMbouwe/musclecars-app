@@ -80,8 +80,12 @@ const CarDetails = ({ currentUser, isAdmin }) => {
   );
 };
 
+CarDetails.defaultProps = {
+  currentUser: null,
+};
+
 CarDetails.propTypes = {
-  currentUser: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.object]),
   isAdmin: PropTypes.bool.isRequired,
 };
 

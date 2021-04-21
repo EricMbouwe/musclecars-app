@@ -5,7 +5,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CarDetails from './CarDetails';
 import Home from './Home';
 import Appointments from './Appointments';
@@ -21,6 +21,8 @@ import PrivateRoute from '../components/PrivateRoute';
 
 function App() {
   const dispatch = useDispatch();
+  const appState = useSelector((state) => state.app);
+  const { user } = appState;
 
   useEffect(() => {
     dispatch(checkLoggedInStatus());
@@ -44,6 +46,7 @@ function App() {
         <Header
           dispatch={dispatch}
           currentUser={localUser}
+          user={user}
           loggedIn={loggedIn}
           isAdmin={isAdmin}
         />

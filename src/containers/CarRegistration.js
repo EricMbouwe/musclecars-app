@@ -21,6 +21,12 @@ const CarRegistration = ({ dispatch }) => {
   const carState = useSelector((state) => state.car);
   const { data: car } = carState;
 
+  useEffect(() => {
+    if (id) {
+      dispatch(getCar(id));
+    }
+  }, []);
+
   const [carName, setCarName] = useState(car.name || '');
   const [carPrice, setCarPrice] = useState(car.price?.toString() || '');
   const [carDescription, setCarDescription] = useState(car.description || '');
@@ -39,12 +45,6 @@ const CarRegistration = ({ dispatch }) => {
     e.preventDefault();
     dispatch(addNewPicture(url, id));
   };
-
-  useEffect(() => {
-    if (id) {
-      dispatch(getCar(id));
-    }
-  }, []);
 
   return (
     <div>
