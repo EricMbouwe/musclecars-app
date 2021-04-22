@@ -7,7 +7,7 @@ const CarList = ({
   <div className="car-list flex flex-wrap mt-5">
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
-    {cars
+    {cars.length > 0
       && cars.map((car) => <Car key={car.id} car={car} isAdmin={isAdmin} />)}
   </div>
 );

@@ -1,13 +1,20 @@
 import PropTypes from 'prop-types';
-import Appointment from './Appointment';
+import Appointment from '../containers/Appointment';
 
-const AppointmentList = ({ appointments, isPending, error }) => (
+const AppointmentList = ({
+  appointments,
+  isPending,
+  error,
+}) => (
   <div className="car-list flex flex-wrap mt-5">
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
     {appointments.length > 0
       && appointments.map((appointment) => (
-        <Appointment key={appointment.id} appointment={appointment} />
+        <Appointment
+          key={appointment.id}
+          appointment={appointment}
+        />
       ))}
   </div>
 );
