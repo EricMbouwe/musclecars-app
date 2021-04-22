@@ -268,11 +268,10 @@ export const updateAppointment = (city, date, carID, userID, id) => async (
 export const deleteAppointment = (id, userID) => async (dispatch) => {
   try {
     dispatch(sendingData());
-    const response = await axios.delete(`/api/v1/users/${userID}/appointments/${id}`, {
+    await axios.delete(`/api/v1/users/${userID}/appointments/${id}`, {
       withCredentials: true,
     });
     dispatch(getAppointmentList(userID));
-    console.log('DELETED:', response);
   } catch (error) {
     dispatch(sendingFailed());
   }
