@@ -14,9 +14,11 @@ const Home = ({ isAdmin }) => {
   }, []);
 
   return (
-    <div>
-      <h2>APP HOME</h2>
-      <h2>THE CAR LIST</h2>
+    <div className="md:container md:mx-auto">
+      <div className="headings my-12">
+        <h2 className="font-bold text-3xl leading-normal">LATEST MODELS</h2>
+        <p className="text-xs text-gray-400 font-bold">Please select a Car Model</p>
+      </div>
       <CarList
         cars={data}
         isPending={isPending}

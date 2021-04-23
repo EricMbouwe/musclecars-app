@@ -5,40 +5,42 @@ import { logOut } from '../actions/actionCreator';
 const Header = ({
   dispatch, currentUser, loggedIn, isAdmin,
 }) => (
-  <header>
-    <nav className="flex justify-center py-4">
-      <Link to="/">Logo</Link>
+  <header className="">
+    <nav className="flex justify-between py-4 md:container md:mx-auto">
+      <Link to="/" className="font-extrabold text-xl">
+        MUSCLECARS
+      </Link>
       <ul className="nav-links ml-3 flex">
         {!loggedIn && (
-          <li className="mr-2">
+          <li className="mr-2 px-2 hover:text-green-600 hover:border-b-4">
             <NavLink to="/login">Login</NavLink>
           </li>
         )}
         {!loggedIn && (
-          <li className="mr-2">
+          <li className="mr-2 px-2 hover:text-green-600 hover:border-b-4">
             <NavLink to="/signup">Sign up</NavLink>
           </li>
         )}
         {loggedIn && (
-          <li className="mr-2">
+          <li className="mr-2 px-2 hover:text-green-600 hover:border-b-4">
             <NavLink to={`/users/${currentUser.id}/appointments`}>
               My appointments
             </NavLink>
           </li>
         )}
         {isAdmin && (
-          <li className="mr-2">
+          <li className="mr-2 px-2 hover:text-green-600 hover:border-b-4">
             <NavLink to="/admin/cars/new">New Car</NavLink>
           </li>
         )}
         {loggedIn && (
-          <li className="mr-2 font-bold">
-            <h2>{currentUser.name}</h2>
+          <li className="mr-2">
+            <h2 className="font-extrabold">{currentUser.name}</h2>
           </li>
         )}
         {loggedIn && (
-          <li>
-            <NavLink to="/" onClick={() => dispatch(logOut())}>
+          <li className="mr-2 px-2 hover:text-green-600">
+            <NavLink to="/" onClick={() => dispatch(logOut())} className=" hover:border-green-500 border-b-4 py-1">
               Logout
             </NavLink>
           </li>

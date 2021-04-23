@@ -4,7 +4,7 @@ import Car from './Car';
 const CarList = ({
   cars, isPending, error, isAdmin,
 }) => (
-  <div className="car-list flex flex-wrap mt-5">
+  <div className="car-list flex flex-wrap mt-5 md:container md:mx-auto">
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
     {cars.length > 0
