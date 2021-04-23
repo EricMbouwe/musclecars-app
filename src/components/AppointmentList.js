@@ -9,6 +9,7 @@ const AppointmentList = ({
   <div className="car-list flex flex-wrap mt-5">
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
+    {appointments.length === 0 && <span>You dont have any appointment</span>}
     {appointments.length > 0
       && appointments.map((appointment) => (
         <Appointment

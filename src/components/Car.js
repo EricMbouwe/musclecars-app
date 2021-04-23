@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { deleteCar } from '../actions/actionCreator';
 import Button from './Button';
 
 const Car = ({ car, isAdmin }) => (
-  <div className="mx-5">
-    <Link to={`cars/${car.id}`}>
-      <img
-        src={car?.pictures[0]?.url}
-        alt={car.name}
-        width="250"
-        height="200"
-        className="border border-gray-300 mx-auto my-4"
-      />
-      <h1>{car.name}</h1>
-      <span>{car.price}</span>
+  <div className="" style={{ height: '600px' }}>
+    <img
+      src={car?.pictures[0]?.url}
+      alt={car.name}
+      className="object-cover h-4/5 rounded-md"
+      style={{ pointerEvents: 'initial' }}
+    />
+    <div className="mt-4 pointer-events-none">
+      <h1 className="font-bold">{car.name?.toUpperCase()}</h1>
+      <span className="font-semibold">{car.price}</span>
       <span>$</span>
-    </Link>
+    </div>
     {isAdmin && (
       <div>
         <Button name="DELETEBTN" action={deleteCar(car.id)} />
