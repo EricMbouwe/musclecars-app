@@ -54,7 +54,9 @@ function App() {
           <Route exact path="/">
             <Home dispatch={dispatch} currentUser={localUser} isAdmin={isAdmin} />
           </Route>
-          <Route exact path="/admin" component={AdminLogin} />
+          <Route exact path="/admin">
+            <AdminLogin />
+          </Route>
           <PrivateRoute
             exact
             path="/admin/cars/new"
