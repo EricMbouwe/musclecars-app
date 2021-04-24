@@ -1,14 +1,19 @@
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import Car from './Car';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const CarList = ({
   cars, isPending, error, isAdmin,
 }) => (
-  <div className="car-list flex flex-wrap my-5 md:container:container md:mx-auto">
-    {isPending && <span>Loading...</span>}
+  <div className="car-list my-5 md:container md:mx-auto">
+    {isPending && (
+    <div className="cars--spinner flex justify-center items-center h-96 overflow-hidden">
+      <Loader type="Bars" color="#10B981" height={70} width={70} />
+    </div>
+    )}
     {error && <span>{error}</span>}
     <Carousel
       autoFocus

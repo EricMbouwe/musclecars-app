@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import Button from '../components/Button';
 import { deleteCar, getCar } from '../actions/actionCreator';
 import BookNowModal from './BookNowModal';
@@ -21,8 +22,11 @@ const CarDetails = ({ currentUser, isAdmin }) => {
 
   return (
     <div>
-      <h2>CAR DETAILS</h2>
-      {isPending && <span>Loading...</span>}
+      {isPending && (
+        <div className="car--spinner flex justify-center items-center h-96">
+          <Loader type="Bars" color="#10B981" height={70} width={70} />
+        </div>
+      )}
       {error && <span>{error}</span>}
       {car.status === 'AD' && <h1>You do not belong there, sign in please!</h1>}
       {car.name && (
