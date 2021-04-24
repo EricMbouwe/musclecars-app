@@ -10,7 +10,6 @@ const CarList = ({
   <div className="car-list flex flex-wrap my-5 md:container:container md:mx-auto">
     {isPending && <span>Loading...</span>}
     {error && <span>{error}</span>}
-    {cars.length === 0 && <span>There is no cars</span>}
     <Carousel
       autoFocus
       autoPlay={false}

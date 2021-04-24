@@ -12,9 +12,19 @@ body {
 }
 
 .carousel.carousel-slider .control-arrow {
-  background: hsl(120, 100%, 18%);
+  background: hsl(160, 84%, 39%);
 }
 
 .carousel.carousel-slider .control-arrow:hover {
-  background: hsl(120, 100%, 25%);
+  background: hsl(160, 84%, 39%);
+}
+
+.carousel .control-dots .dot {
+  border: 1px solid hsl(216, 12%, 84%)
+}
+
+.carousel .control-dots .dot.selected, 
+.carousel .control-dots .dot:hover {
+  opacity: 1;
+  background: hsl(160, 84%, 39%);
 }

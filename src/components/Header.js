@@ -35,11 +35,11 @@ const Header = ({
         )}
         {loggedIn && (
           <li className="mr-2">
-            <h2 className="font-extrabold">{currentUser.name}</h2>
+            <h2 className="font-extrabold text-green-500">{currentUser.name}</h2>
           </li>
         )}
         {loggedIn && (
-          <li className="mr-2 px-2 hover:text-green-600">
+          <li className="mr-2 px-2 hover:text-green-500">
             <NavLink to="/" onClick={() => dispatch(logOut())} className=" hover:border-green-500 border-b-4 py-1">
               Logout
             </NavLink>

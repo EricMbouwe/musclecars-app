@@ -41,7 +41,7 @@ function App() {
   const isAdmin = userRole === 'admin';
 
   return (
-    <div className="App text-gray-800">
+    <div className="App text-gray-700">
       <Router history={history}>
         <Header
           dispatch={dispatch}
