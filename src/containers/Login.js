@@ -3,11 +3,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from '../actions/actionCreator';
 
-const Login = ({ loggedInStatus, currentUser, dispatch }) => {
+const Login = ({ dispatch }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [errors, setErrors] = useState('');
-  // const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,44 +13,37 @@ const Login = ({ loggedInStatus, currentUser, dispatch }) => {
   };
 
   return (
-    <div>
-      <h2>Hey Sign In</h2>
-      <h1>{loggedInStatus}</h1>
-      {currentUser && <h1>{currentUser.name}</h1>}
+    <div className="container mx-auto">
+      <h2 className="mt-5">SIGN IN</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Email</label>
+      <form onSubmit={handleSubmit} className="text-left p-8 border shadow-sm md:max-w-md mx-auto my-4 rounded-md">
+        <div className="form-group mt-3 flex flex-col">
+          <label htmlFor="name" className="">Email</label>
           <input
             type="text"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-3 flex flex-col">
           <label htmlFor="name">Password</label>
           <input
-            type="text"
+            type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
           />
         </div>
-        <button type="submit">login</button>
+        <button type="submit" className="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-100 text-base font-medium text-gray-700 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm">login</button>
       </form>
     </div>
   );
 };
 
-Login.defaultProps = {
-  loggedInStatus: 'NOT_LOGGED_IN',
-  currentUser: {},
-};
-
 Login.propTypes = {
-  loggedInStatus: PropTypes.string,
-  currentUser: PropTypes.oneOfType([PropTypes.object]),
   dispatch: PropTypes.func.isRequired,
 };
 
