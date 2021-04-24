@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
+import { Carousel } from 'react-responsive-carousel';
 import Button from '../components/Button';
 import { deleteCar, getCar } from '../actions/actionCreator';
 import BookNowModal from './BookNowModal';
@@ -28,19 +29,50 @@ const CarDetails = ({ currentUser, isAdmin }) => {
         </div>
       )}
       {error && <span>{error}</span>}
-      {car.status === 'AD' && <h1>You do not belong there, sign in please!</h1>}
       {car.name && (
         <div>
-          <img
-            src={car?.pictures[0]?.url}
-            alt={car.name}
-            width="250"
-            height="200"
-            className="border border-gray-300 mx-auto my-5"
-          />
-          <h1>{car.name}</h1>
-          <h1>{car.price}</h1>
-          <h3 className="my-5">{car.description}</h3>
+          <div className="car-images-carousel">
+            {car?.pictures.length > 1 ? (
+              <Carousel
+                autoFocus
+                autoPlay={false}
+                stopOnHover
+                centerSlidePercentage={50}
+                dynamicHeight={false}
+                centerMode
+                showArrows
+                showIndicators
+                showStatus={false}
+                infiniteLoop
+                transitionTime={1500}
+                useKeyboardArrows
+              >
+                {car?.pictures.map((picture) => (
+                  <img
+                    key={picture.id}
+                    src={picture.url}
+                    alt={car.name}
+                    className="border border-gray-300 mx-auto my-5"
+                  />
+                ))}
+              </Carousel>
+            ) : (
+              <div className="w-6/12 mt-4 container mx-auto">
+                <img
+                  src={car?.pictures[0].url}
+                  alt={car.name}
+                  className="border border-green-100 rounded-md w-full"
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="car-details">
+            <h1>{car.name}</h1>
+            <h1>{car.price}</h1>
+            <h3 className="my-5">{car.description}</h3>
+          </div>
+
           <BookNowModal
             open={open}
             setOpen={setOpen}
@@ -60,7 +92,7 @@ const CarDetails = ({ currentUser, isAdmin }) => {
             <Button
               name="BOOK NOW"
               action={() => setOpen(true)}
-              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+              className="my-5 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
             />
           )}
           {isAdmin && (
