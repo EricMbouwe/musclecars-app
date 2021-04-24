@@ -17,7 +17,7 @@ const Appointment = ({ appointment }) => {
         />
       </div>
       <div className="details mt-4">
-        <h3 className="text-xl text-gray-400 font-extrabold py-1">
+        <h3 className="text-xl uppercase text-gray-400 font-extrabold py-1">
           {appointment.car?.name}
         </h3>
         <h1 className="text-sm text-gray-400 font-bold py-1">
@@ -34,7 +34,7 @@ const Appointment = ({ appointment }) => {
         id={appointment?.id?.toString()}
       />
       <Button
-        name="DELETEBTN"
+        name="DELETE"
         action={() => setOpenDel(true)}
         className="my-4 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
       />
