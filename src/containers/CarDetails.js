@@ -31,31 +31,34 @@ const CarDetails = ({ currentUser, isAdmin }) => {
       {error && <span>{error}</span>}
       {car.name && (
         <div>
-          <div className="car-images-carousel">
+          <div className="car-images-carousel mt-2">
             {car?.pictures.length > 1 ? (
-              <Carousel
-                autoFocus
-                autoPlay={false}
-                stopOnHover
-                centerSlidePercentage={50}
-                dynamicHeight={false}
-                centerMode
-                showArrows
-                showIndicators
-                showStatus={false}
-                infiniteLoop
-                transitionTime={1500}
-                useKeyboardArrows
-              >
-                {car?.pictures.map((picture) => (
-                  <img
-                    key={picture.id}
-                    src={picture.url}
-                    alt={car.name}
-                    className="border border-gray-300 mx-auto my-5"
-                  />
-                ))}
-              </Carousel>
+              <div className="">
+                <Carousel
+                  autoFocus
+                  autoPlay={false}
+                  stopOnHover
+                  centerSlidePercentage={50}
+                  dynamicHeight={false}
+                  centerMode
+                  showArrows
+                  showIndicators
+                  showStatus={false}
+                  infiniteLoop
+                  transitionTime={1500}
+                  useKeyboardArrows
+                >
+                  {car?.pictures.map((picture) => (
+                    <div className="mx-2 h-full" key={picture.id}>
+                      <img
+                        src={picture.url}
+                        alt={car.name}
+                        className="h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                </Carousel>
+              </div>
             ) : (
               <div className="w-6/12 mt-4 container mx-auto">
                 <img
@@ -66,11 +69,18 @@ const CarDetails = ({ currentUser, isAdmin }) => {
               </div>
             )}
           </div>
-
+          <hr className="my-4" />
           <div className="car-details">
-            <h1>{car.name}</h1>
-            <h1>{car.price}</h1>
-            <h3 className="my-5">{car.description}</h3>
+            <h1 className="text-xl text-gray-400 font-extrabold py-1">
+              {car.name}
+            </h1>
+            <span className="text-xl text-gray-400 font-extrabold py-1">$</span>
+            <span className="text-xl text-gray-400 font-extrabold py-1">
+              {car.price}
+            </span>
+            <h3 className="text-xl text-gray-400 font-extrabold py-1 mb-5">
+              {car.description}
+            </h3>
           </div>
 
           <BookNowModal
