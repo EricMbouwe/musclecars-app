@@ -17,13 +17,16 @@ const Appointments = ({ currentUser }) => {
 
   return (
     <div>
-      <h2 className="my-5">MY APPOINTMENTS LIST</h2>
       <AppointmentList
         appointments={data}
         isPending={isPending}
         error={error}
       />
-      <Button name="BACK" action={() => history.goBack()} />
+      <Button
+        name="BACK"
+        action={() => history.goBack()}
+        className="my-5 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+      />
     </div>
   );
 };

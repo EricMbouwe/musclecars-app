@@ -8,17 +8,25 @@ const Appointment = ({ appointment }) => {
   const [openDel, setOpenDel] = useState(false);
 
   return (
-    <div className="mx-5">
-      <img
-        src={appointment.car?.pictures[0]?.url}
-        alt={appointment.city}
-        width="250"
-        height="200"
-        className="border border-gray-300 mx-auto my-4"
-      />
-      <h3>{appointment.car?.name}</h3>
-      <h1>{appointment.city.toUpperCase()}</h1>
-      <h2>{appointment.appointment_date}</h2>
+    <div className="border border-gray-200 w-3/12 rounded my-1">
+      <div className="image w-full h-60">
+        <img
+          src={appointment.car?.pictures[0]?.url}
+          alt={appointment.city}
+          className="border border-gray-300 w-full h-full object-cover"
+        />
+      </div>
+      <div className="details mt-4">
+        <h3 className="text-xl text-gray-400 font-extrabold py-1">
+          {appointment.car?.name}
+        </h3>
+        <h1 className="text-sm text-gray-400 font-bold py-1">
+          {appointment.city.toUpperCase()}
+        </h1>
+        <h2 className="text-sm text-gray-400 font-bold py-1">
+          {appointment.appointment_date}
+        </h2>
+      </div>
       <DeleteModal
         open={openDel}
         setOpen={setOpenDel}
@@ -28,7 +36,7 @@ const Appointment = ({ appointment }) => {
       <Button
         name="DELETEBTN"
         action={() => setOpenDel(true)}
-        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+        className="my-4 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
       />
     </div>
   );
