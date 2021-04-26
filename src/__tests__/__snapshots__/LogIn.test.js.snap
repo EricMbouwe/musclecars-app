@@ -1,0 +1,339 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> If username does not exist renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container mx-auto"
+      >
+        <h2
+          class="mt-5"
+        >
+          SIGN IN
+        </h2>
+        <form
+          class="text-left p-8 border shadow-sm md:max-w-md mx-auto my-4 rounded-md"
+        >
+          <div
+            class="form-group mt-3 flex flex-col"
+          >
+            <label
+              class=""
+              for="name"
+            >
+              Email
+            </label>
+            <input
+              class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+              id="email"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="form-group my-3 flex flex-col"
+          >
+            <label
+              for="name"
+            >
+              Password
+            </label>
+            <input
+              class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+              id="password"
+              type="password"
+              value=""
+            />
+          </div>
+          <button
+            class="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-100 text-base font-medium text-gray-700 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm"
+            type="submit"
+          >
+            login
+          </button>
+        </form>
+      </div>
+      <div>
+        Second Page
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container mx-auto"
+    >
+      <h2
+        class="mt-5"
+      >
+        SIGN IN
+      </h2>
+      <form
+        class="text-left p-8 border shadow-sm md:max-w-md mx-auto my-4 rounded-md"
+      >
+        <div
+          class="form-group mt-3 flex flex-col"
+        >
+          <label
+            class=""
+            for="name"
+          >
+            Email
+          </label>
+          <input
+            class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+            id="email"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="form-group my-3 flex flex-col"
+        >
+          <label
+            for="name"
+          >
+            Password
+          </label>
+          <input
+            class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+            id="password"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-100 text-base font-medium text-gray-700 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm"
+          type="submit"
+        >
+          login
+        </button>
+      </form>
+    </div>
+    <div>
+      Second Page
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`<Login /> If username exists renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container mx-auto"
+      >
+        <h2
+          class="mt-5"
+        >
+          SIGN IN
+        </h2>
+        <form
+          class="text-left p-8 border shadow-sm md:max-w-md mx-auto my-4 rounded-md"
+        >
+          <div
+            class="form-group mt-3 flex flex-col"
+          >
+            <label
+              class=""
+              for="name"
+            >
+              Email
+            </label>
+            <input
+              class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+              id="email"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="form-group my-3 flex flex-col"
+          >
+            <label
+              for="name"
+            >
+              Password
+            </label>
+            <input
+              class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+              id="password"
+              type="password"
+              value=""
+            />
+          </div>
+          <button
+            class="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-100 text-base font-medium text-gray-700 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm"
+            type="submit"
+          >
+            login
+          </button>
+        </form>
+      </div>
+      <div>
+        Second Page
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container mx-auto"
+    >
+      <h2
+        class="mt-5"
+      >
+        SIGN IN
+      </h2>
+      <form
+        class="text-left p-8 border shadow-sm md:max-w-md mx-auto my-4 rounded-md"
+      >
+        <div
+          class="form-group mt-3 flex flex-col"
+        >
+          <label
+            class=""
+            for="name"
+          >
+            Email
+          </label>
+          <input
+            class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+            id="email"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="form-group my-3 flex flex-col"
+        >
+          <label
+            for="name"
+          >
+            Password
+          </label>
+          <input
+            class="p-1 border border-gray-300 text-gray-500 focus:ring-green-200"
+            id="password"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-100 text-base font-medium text-gray-700 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm"
+          type="submit"
+        >
+          login
+        </button>
+      </form>
+    </div>
+    <div>
+      Second Page
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
