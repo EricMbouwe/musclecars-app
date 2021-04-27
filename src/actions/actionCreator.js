@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as actions from './actionTypes';
 import history from '../history';
 
-// axios.defaults.baseURL = 'https://musclecars-api.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://musclecarsapi.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 // REQUEST ACTIONS
 const requestingData = () => ({ type: actions.REQUESTING_DATA });
@@ -77,6 +77,7 @@ export const checkLoggedInStatus = () => async (dispatch) => {
     });
     dispatch(receivedLoggedInStatusData(response));
   } catch (error) {
+    localStorage.clear();
     dispatch(requestingFailed());
   }
 };
