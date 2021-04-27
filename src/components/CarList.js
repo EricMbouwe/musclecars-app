@@ -17,12 +17,13 @@ const CarList = ({
     {error && <span>{error}</span>}
     <Carousel
       autoFocus
-      autoPlay={false}
+      autoPlay
       stopOnHover
       centerSlidePercentage={55}
       dynamicHeight={false}
       centerMode
       showArrows
+      showThumbs={false}
       showIndicators
       showStatus={false}
       infiniteLoop
