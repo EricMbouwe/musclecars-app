@@ -31,11 +31,6 @@ function App() {
   const localLogStatus = localStorage.getItem('loggedStatus');
   const localUser = JSON.parse(localStorage.getItem('user'));
 
-  // console.log('LOCAL-LOG-STATUS:', localLogStatus);
-  // console.log('USER:', localUser);
-  // console.log('USERNAME:', localUser?.name);
-  // console.log('SERVER-LOG-STATUS:', loggedInStatus);
-
   const userRole = localUser?.role;
   const loggedIn = localLogStatus === 'LOGGED_IN';
   const isAdmin = userRole === 'admin';

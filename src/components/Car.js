@@ -9,7 +9,7 @@ const Car = ({ car }) => (
       style={{ pointerEvents: 'initial' }}
     />
     <div className="mt-4 pointer-events-none">
-      <h1 className="font-bold">{car.name?.toUpperCase()}</h1>
+      <h1 className="font-bold uppercase">{car.name}</h1>
       <span className="text-sm text-gray-400 font-bold">$ </span>
       <span className="text-sm text-gray-400 font-bold">{car.price}</span>
     </div>

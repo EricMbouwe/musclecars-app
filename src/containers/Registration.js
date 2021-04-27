@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { addNewUser } from '../actions/actionCreator';
 
-const Registration = ({ dispatch }) => {
+const Registration = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,10 +62,6 @@ const Registration = ({ dispatch }) => {
       </form>
     </div>
   );
-};
-
-Registration.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 export default Registration;
