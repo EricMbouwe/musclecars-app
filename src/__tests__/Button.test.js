@@ -1,9 +1,21 @@
+/* eslint-disable global-require */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Button from '../components/Button';
 
 jest.mock('../components/Button', () => {
-  const Button = () => (<div>delete</div>);
+  const PropTypes = require('prop-types');
+
+  const Button = ({ name, action }) => (
+    <button type="button" onClick={action}>
+      {name}
+    </button>
+  );
+
+  Button.propTypes = {
+    name: PropTypes.string.isRequired,
+    action: PropTypes.func.isRequired,
+  };
   return Button;
 });
 

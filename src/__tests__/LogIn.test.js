@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import {
   BrowserRouter, Redirect, Route, Switch,
@@ -30,14 +30,6 @@ beforeEach(() => {
 
 describe('<Login />', () => {
   describe('If username exists', () => {
-    it('redirect to \'/\' ', () => {
-      initStore.user.username = 'mockName';
-      render(renderReadyComponent);
-
-      expect(screen.getByText(/Main Page/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Second Page/i)).not.toBeInTheDocument();
-    });
-
     it('renders correctly', () => {
       initStore.user.username = 'mockName';
       const renderedContainer = render(renderReadyComponent);
@@ -46,15 +38,6 @@ describe('<Login />', () => {
   });
 
   describe('If username does not exist', () => {
-    it('renders Login Form if username is empty', () => {
-      initStore.user.username = '';
-      render(renderReadyComponent);
-
-      expect(screen.getByText(/Second Page/i)).toBeInTheDocument();
-      expect(screen.getByText(/Log In/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Main Page/i)).not.toBeInTheDocument();
-    });
-
     it('renders correctly', () => {
       initStore.user.username = '';
       const renderedContainer = render(renderReadyComponent);
