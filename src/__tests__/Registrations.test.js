@@ -8,7 +8,7 @@ import Registration from '../containers/Registration';
 
 jest.mock('../containers/Registration', () => {
   const Registration = () => (<div>Mock RegistrationForm</div>);
-  Registration.displayName = 'UserFormContainer';
+  Registration.displayName = 'User Form';
   return Registration;
 });
 
@@ -27,11 +27,11 @@ beforeEach(() => {
 });
 
 describe('<Registration />', () => {
-  describe('if token is empty', () => {
+  describe('logged in status is false', () => {
     it('renders Registration Form if logged in status is false', () => {
       localStorage.loggedStatus = 'NOT_LOGGED_IN';
       render(renderReadyComponent);
-      expect(screen.getByText(/Mock User Form/i)).toBeInTheDocument();
+      expect(screen.getByText(/Mock RegistrationForm/i)).toBeInTheDocument();
       expect(screen.getByText(/Second Page/i)).toBeInTheDocument();
       expect(screen.queryByText(/Main Page/i)).not.toBeInTheDocument();
     });
@@ -42,12 +42,11 @@ describe('<Registration />', () => {
       expect(renderedContainer).toMatchSnapshot();
     });
   });
-  describe('if token isn\'t empty', () => {
+  describe('logged in status is true', () => {
     it('redirect to \'/\'', () => {
       localStorage.loggedStatus = 'LOGGED_IN';
       render(renderReadyComponent);
-      expect(screen.getByText(/Main Page/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Second Page/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Second Page/i)).toBeInTheDocument();
     });
 
     it('renders correctly', () => {

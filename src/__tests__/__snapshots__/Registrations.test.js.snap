@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Registration /> if token is empty renders correctly 1`] = `
+exports[`<Registration /> logged in status is false renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -75,7 +75,7 @@ Object {
 }
 `;
 
-exports[`<Registration /> if token isn't empty renders correctly 1`] = `
+exports[`<Registration /> logged in status is true renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
