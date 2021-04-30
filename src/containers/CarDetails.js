@@ -29,6 +29,7 @@ const CarDetails = ({ currentUser, isAdmin }) => {
         </div>
       )}
       {error && <span>{error}</span>}
+      {car.status === 'AD' && <div>{car.message}</div> }
       {car.name && (
         <div>
           <div className="car-images-carousel mt-2">
