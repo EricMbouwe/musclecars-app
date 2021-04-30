@@ -10,13 +10,14 @@ const AppointmentList = ({ appointments, isPending, error }) => (
       </div>
     )}
     {error && <span>{error}</span>}
-    {appointments.length === 0 && <span>You dont have any appointment</span>}
-    <div className="applist flex flex-wrap">
-      {appointments.length > 0
-        && appointments.map((appointment) => (
+    {appointments.length === 0 && <div>You dont have any appointment</div>}
+    {appointments.length > 0 && (
+      <div className="applist flex flex-wrap">
+        {appointments.map((appointment) => (
           <Appointment key={appointment.id} appointment={appointment} />
         ))}
-    </div>
+      </div>
+    )}
   </div>
 );
 
