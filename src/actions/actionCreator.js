@@ -3,9 +3,7 @@ import * as actions from './actionTypes';
 import history from '../history';
 
 // axios.defaults.baseURL = 'https://musclecarsapi.herokuapp.com';
-const csrfToken = document.querySelector('[name=csrf-token]').content;
 axios.defaults.baseURL = 'http://localhost:4000';
-axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
 // REQUEST ACTIONS
 const requestingData = () => ({ type: actions.REQUESTING_DATA });
@@ -46,9 +44,11 @@ export const receivedSignedInUserData = (response) => ({
   payload: response.data,
 });
 
-export const signIn = (email, password) => async (dispatch) => {
+export const signIn = (email, password, csrfToken) => async (dispatch) => {
   try {
     dispatch(sendingData());
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+
     const response = await axios.post(
       '/sessions',
       {
