@@ -10,8 +10,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const csrfToken = document.querySelector('[name=csrf-token]').content;
-    dispatch(signIn(email, password, csrfToken));
+    dispatch(signIn(email, password));
   };
 
   return (

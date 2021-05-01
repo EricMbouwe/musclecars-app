@@ -44,11 +44,9 @@ export const receivedSignedInUserData = (response) => ({
   payload: response.data,
 });
 
-export const signIn = (email, password, csrfToken) => async (dispatch) => {
+export const signIn = (email, password) => async (dispatch) => {
   try {
     dispatch(sendingData());
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
-
     const response = await axios.post(
       '/sessions',
       {
