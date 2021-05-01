@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as actions from './actionTypes';
 import history from '../history';
 
-// axios.defaults.baseURL = 'https://musclecarsapi.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.baseURL = 'https://musclecarsapi.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:4000';
 
 // REQUEST ACTIONS
 const requestingData = () => ({ type: actions.REQUESTING_DATA });
