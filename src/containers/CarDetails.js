@@ -63,7 +63,7 @@ const CarDetails = ({ currentUser, isAdmin }) => {
             ) : (
               <div className="w-6/12 mt-4 container mx-auto">
                 <img
-                  src={car?.pictures[0].url}
+                  src={car?.pictures[0]?.url}
                   alt={car.name}
                   className="border border-green-100 rounded-md w-full"
                 />
