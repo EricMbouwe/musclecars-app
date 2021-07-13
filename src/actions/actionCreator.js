@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as actions from './actionTypes';
 import history from '../history';
 
-// axios.defaults.baseURL = 'https://musclecars-api.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://musclecarsapi.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 // REQUEST ACTIONS
 const requestingData = () => ({ type: actions.REQUESTING_DATA });
@@ -27,7 +27,7 @@ export const addNewUser = (name, email, password) => async (dispatch) => {
         email,
         password,
       },
-      { withCredentials: true },
+      { withCredentials: 'include' },
     );
     if (response.data.status === 'created') {
       dispatch(receivedNewUserData(response));
@@ -53,7 +53,7 @@ export const signIn = (email, password) => async (dispatch) => {
         email,
         password,
       },
-      { withCredentials: true },
+      { withCredentials: 'include' },
     );
     if (response.data.logged_in) {
       dispatch(receivedSignedInUserData(response));
@@ -73,10 +73,11 @@ export const checkLoggedInStatus = () => async (dispatch) => {
   try {
     dispatch(requestingData());
     const response = await axios.get('/logged_in', {
-      withCredentials: true,
+      withCredentials: 'include',
     });
     dispatch(receivedLoggedInStatusData(response));
   } catch (error) {
+    localStorage.clear();
     dispatch(requestingFailed());
   }
 };
@@ -91,7 +92,7 @@ export const logOut = () => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.delete('/logout', {
-      withCredentials: true,
+      withCredentials: 'include',
     });
     dispatch(receivedLogOutStatusData(response));
   } catch (error) {
@@ -109,7 +110,7 @@ export const getCarList = () => async (dispatch) => {
   try {
     dispatch(requestingData());
     const response = await axios.get('/api/v1/cars', {
-      withCredentials: true,
+      withCredentials: 'include',
     });
     dispatch(receivedCarListData(response));
   } catch (error) {
@@ -127,7 +128,7 @@ export const getCar = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
     const response = await axios.get(`/api/v1/cars/${id}`, {
-      withCredentials: true,
+      withCredentials: 'include',
     });
     dispatch(receivedCarData(response));
   } catch (error) {
@@ -150,7 +151,7 @@ export const addNewCar = (name, price, description) => async (dispatch) => {
         price,
         description,
       },
-      { withCredentials: true },
+      { withCredentials: 'include' },
     );
     dispatch(receivedNewCarData(response));
     history.push('/');
@@ -176,7 +177,7 @@ export const updateCar = (name, price, description, carID) => async (
         price,
         description,
       },
-      { withCredentials: true },
+      { withCredentials: 'include' },
     );
     dispatch(receivedUpdatedCarData(response));
   } catch (error) {
@@ -188,7 +189,7 @@ export const deleteCar = (id) => async (dispatch) => {
   try {
     dispatch(sendingData());
     const response = await axios.delete(`/admin/cars/${id}`, {
-      withCredentials: true,
+      withCredentials: 'include',
     });
     dispatch(getCarList(response));
     history.push('/');
@@ -207,7 +208,7 @@ export const getAppointmentList = (id) => async (dispatch) => {
   try {
     dispatch(requestingData());
     const response = await axios.get(`/api/v1/users/${id}/appointments`, {
-      withCredentials: true,
+      withCredentials: 'include',
     });
     dispatch(receivedAppointmentListData(response));
   } catch (error) {
@@ -232,7 +233,7 @@ export const addNewAppointment = (city, date, carId, userID) => async (
         appointment_date: date,
         car_id: carId,
       },
-      { withCredentials: true },
+      { withCredentials: 'include' },
     );
     dispatch(receivedNewAppointmentData(response));
   } catch (error) {
@@ -257,7 +258,7 @@ export const updateAppointment = (city, date, carID, userID, id) => async (
         date,
         carID,
       },
-      { withCredentials: true },
+      { withCredentials: 'include' },
     );
     dispatch(receivedUpdatedAppointmentData(response));
   } catch (error) {
@@ -269,7 +270,7 @@ export const deleteAppointment = (id, userID) => async (dispatch) => {
   try {
     dispatch(sendingData());
     await axios.delete(`/api/v1/users/${userID}/appointments/${id}`, {
-      withCredentials: true,
+      withCredentials: 'include',
     });
     dispatch(getAppointmentList(userID));
   } catch (error) {
@@ -286,7 +287,7 @@ export const addNewPicture = (url, carID) => async (dispatch) => {
         url,
       },
       {
-        withCredentials: true,
+        withCredentials: 'include',
       },
     );
     window.location.reload();

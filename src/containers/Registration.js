@@ -57,7 +57,7 @@ const Registration = () => {
           type="submit"
           className="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-100 text-base font-medium text-gray-700 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm"
         >
-          login
+          register
         </button>
       </form>
     </div>

@@ -13,7 +13,7 @@ The app is using an [API](https://github.com/ericmbouwe/musclecars-api).
 ![screenshot](./public/musclecarsGif.gif)
 
 ## Live Demo
-Please check [live demo of the project.](https://musclecars-app.herokuapp.com/)
+Please check [live demo of the project.](https://musclecarsapp.herokuapp.com/)
 
 ## Built With
 

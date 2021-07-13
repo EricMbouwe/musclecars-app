@@ -22,7 +22,7 @@ import PrivateRoute from '../components/PrivateRoute';
 function App() {
   const dispatch = useDispatch();
   const appState = useSelector((state) => state.app);
-  const { user } = appState;
+  const { user, loggedInStatus } = appState;
 
   useEffect(() => {
     dispatch(checkLoggedInStatus());
@@ -42,6 +42,7 @@ function App() {
           dispatch={dispatch}
           currentUser={localUser}
           user={user}
+          loggedInStatus={loggedInStatus}
           loggedIn={loggedIn}
           isAdmin={isAdmin}
         />

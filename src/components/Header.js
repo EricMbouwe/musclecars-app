@@ -23,7 +23,7 @@ const Header = ({
         )}
         {loggedIn && (
           <li className="mr-2 px-2 hover:text-green-600 hover:border-b-4">
-            <NavLink to={`/users/${currentUser.id}/appointments`}>
+            <NavLink to={`/users/${currentUser?.id}/appointments`}>
               My appointments
             </NavLink>
           </li>
@@ -35,7 +35,7 @@ const Header = ({
         )}
         {loggedIn && (
           <li className="mr-2 px-2">
-            <h2 className="font-extrabold capitalize text-green-500">{currentUser.name}</h2>
+            <h2 className="font-extrabold capitalize text-green-500">{currentUser?.name}</h2>
           </li>
         )}
         {loggedIn && (
